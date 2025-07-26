@@ -2,39 +2,44 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Giveaway + Shop – XYZ Baseball</title>
 <style>
   body {
     font-family: "Courier New", monospace;
     background-color: #add8e6; /* Light blue */
     text-align: center;
-    padding: 40px;
+    padding: 20px;
     color: #ff1493; /* Hot pink text */
+    margin: 0;
   }
 
   h1, h2, h3 {
-    color: #ff1493; /* Hot pink headings */
+    color: #ff1493;
+    margin-bottom: 15px;
   }
 
   button {
-    padding: 10px 20px;
-    background-color: #ff1493; /* Hot pink button */
+    padding: 12px 18px;
+    background-color: #ff1493;
     color: white;
-    font-size: 15px;
+    font-size: 16px;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 6px;
     transition: background-color 0.3s ease;
+    width: 90%;
+    max-width: 300px;
   }
 
   button:hover {
-    background-color: #ff69b4; /* Lighter pink on hover */
+    background-color: #ff69b4;
   }
 
   a {
     display: inline-block;
     margin-top: 10px;
-    color: #ff1493; /* Hot pink links */
+    color: #ff1493;
     text-decoration: underline;
     transition: color 0.3s ease;
   }
@@ -44,26 +49,30 @@
   }
 
   input[type="text"], input[type="email"] {
-    padding: 10px;
-    margin: 5px 0 15px;
+    padding: 12px;
+    margin: 8px 0 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 250px;
+    width: 90%;
+    max-width: 300px;
+    font-size: 16px;
     font-family: inherit;
   }
 
   label {
-    color: #222; /* Black for contrast */
+    color: #222;
     font-weight: bold;
+    display: block;
+    margin-top: 10px;
   }
 
   .product {
-    margin: 30px auto;
-    max-width: 300px;
+    margin: 20px auto;
     background: #fff;
     padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 90%;
   }
 
   .product img {
@@ -77,22 +86,25 @@
     font-weight: bold;
     color: #222;
     margin: 5px 0 15px;
+    font-size: 18px;
   }
 
   hr {
-    margin: 40px 0;
+    margin: 30px 0;
     border: 1px solid #ff1493;
   }
 
   footer {
     margin-top: 30px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: #222;
   }
 
   /* Search Styling */
   .search {
-    margin: 20px 0;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 400px;
   }
 
   #itemlist {
@@ -105,20 +117,35 @@
   }
 
   #itemlist li a {
-    background: black;
+    background: linear-gradient(90deg, pink, blue);
     color: white;
-    padding: 8px 12px;
-    border-radius: 5px;
+    padding: 10px 15px;
+    border-radius: 6px;
     text-decoration: none;
     font-weight: bold;
-    background: linear-gradient(90deg, pink, blue);
     display: inline-block;
+    width: 100%;
+    max-width: 300px;
     transition: 0.3s;
   }
 
   #itemlist li a:hover {
     background: linear-gradient(90deg, blue, pink);
     color: black;
+  }
+
+  /* Responsive Grid for Products */
+  @media (min-width: 600px) {
+    .products-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .product {
+      flex: 1 1 calc(45% - 20px);
+      max-width: 300px;
+    }
   }
 </style>
 </head>
@@ -131,14 +158,14 @@
     <input type="hidden" name="_next" value="https://wassup-t-money.glitch.me/thankyou.html" />
     <input type="hidden" name="_captcha" value="false" />
 
-    <label for="fname">First Name:</label><br />
-    <input type="text" id="fname" name="fname" required /><br /><br />
+    <label for="fname">First Name:</label>
+    <input type="text" id="fname" name="fname" required />
 
-    <label for="lname">Last Name:</label><br />
-    <input type="text" id="lname" name="lname" required /><br /><br />
+    <label for="lname">Last Name:</label>
+    <input type="text" id="lname" name="lname" required />
 
-    <label for="email">Email:</label><br />
-    <input type="email" id="email" name="email" required /><br /><br />
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required />
 
     <button type="submit">Enter Giveaway</button>
   </form>
@@ -163,10 +190,8 @@
 
     searchInput.addEventListener("input", function() {
       const searchTerm = searchInput.value.toLowerCase();
-
       for (let i = 0; i < items.length; i++) {
         const itemText = items[i].textContent.toLowerCase();
-
         if (itemText.includes(searchTerm)) {
           items[i].style.display = "";
         } else {
@@ -182,28 +207,30 @@
   </p>
   <hr />
 
-  <div class="product">
-    <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/010bda83-fc6f-4553-8e3d-3ec5166f1dd3.image.png?v=1750440321844" alt="XYZ T-Shirts" />
-    <h2><a href="/T-shirts.html">XYZ T-Shirts</a></h2>
-    <div class="price">$35.00</div>
-  </div>
+  <div class="products-container">
+    <div class="product">
+      <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/010bda83-fc6f-4553-8e3d-3ec5166f1dd3.image.png?v=1750440321844" alt="XYZ T-Shirts" />
+      <h2><a href="/T-shirts.html">XYZ T-Shirts</a></h2>
+      <div class="price">$35.00</div>
+    </div>
 
-  <div class="product">
-    <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/6ea172e6-7576-4d74-807e-5cd74bff28d1.image.png?v=1750440676506" alt="XYZ Wrist Tape" />
-    <h2><a href="/Wristtape.html">XYZ Wrist Tape</a></h2>
-    <div class="price">$5.00</div>
-  </div>
+    <div class="product">
+      <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/6ea172e6-7576-4d74-807e-5cd74bff28d1.image.png?v=1750440676506" alt="XYZ Wrist Tape" />
+      <h2><a href="/Wristtape.html">XYZ Wrist Tape</a></h2>
+      <div class="price">$5.00</div>
+    </div>
 
-  <div class="product">
-    <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/3dd6b329-e1a6-448f-909a-ddb465b16ce6.image.png?v=1750440527246" alt="XYZ Wristbands" />
-    <h2><a href="/Wristbands.html">XYZ Wristbands</a></h2>
-    <div class="price">$5.00</div>
-  </div>
+    <div class="product">
+      <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/3dd6b329-e1a6-448f-909a-ddb465b16ce6.image.png?v=1750440527246" alt="XYZ Wristbands" />
+      <h2><a href="/Wristbands.html">XYZ Wristbands</a></h2>
+      <div class="price">$5.00</div>
+    </div>
 
-  <div class="product">
-    <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/65b0fa69-6883-4611-a67d-05c033e14b90.image.png?v=1750440440018" alt="XYZ Batting Gloves" />
-    <h2><a href="/Bsblbattinggloves.html">XYZ Baseball Batting Gloves</a></h2>
-    <div class="price">$45.00</div>
+    <div class="product">
+      <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/65b0fa69-6883-4611-a67d-05c033e14b90.image.png?v=1750440440018" alt="XYZ Batting Gloves" />
+      <h2><a href="/Bsblbattinggloves.html">XYZ Baseball Batting Gloves</a></h2>
+      <div class="price">$45.00</div>
+    </div>
   </div>
 
   <hr />
