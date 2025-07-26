@@ -1,223 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Giveaway + Shop – XYZ Baseball</title>
-    <style>
-      body {
-        font-family: "Courier New", monospace;
-        background-color: #add8e6; /* Light blue */
-        text-align: center;
-        padding: 40px;
-        color: #ff1493; /* Hot pink text */
-      }
+<head>
+<meta charset="UTF-8" />
+<title>Giveaway + Shop – XYZ Baseball</title>
+<style>
+  body {
+    font-family: "Courier New", monospace;
+    background-color: #add8e6; /* Light blue */
+    text-align: center;
+    padding: 40px;
+    color: #ff1493; /* Hot pink text */
+  }
 
-      h1,
-      h2,
-      h3 {
-        color: #ff1493; /* Hot pink headings */
-      }
+  h1, h2, h3 {
+    color: #ff1493; /* Hot pink headings */
+  }
 
-      button {
-        padding: 10px 20px;
-        background-color: #ff1493; /* Hot pink button */
-        color: white;
-        font-size: 15px;
-        border: none;
-        cursor: pointer;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-      }
+  button {
+    padding: 10px 20px;
+    background-color: #ff1493; /* Hot pink button */
+    color: white;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
 
-      button:hover {
-        background-color: #ff69b4; /* Lighter pink on hover */
-      }
+  button:hover {
+    background-color: #ff69b4; /* Lighter pink on hover */
+  }
 
-      a {
-        display: inline-block;
-        margin-top: 10px;
-        color: #ff1493; /* Hot pink links */
-        text-decoration: underline;
-        transition: color 0.3s ease;
-      }
+  a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #ff1493; /* Hot pink links */
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
 
-      a:hover {
-        color: #ff69b4;
-      }
+  a:hover {
+    color: #ff69b4;
+  }
 
-      input[type="text"],
-      input[type="email"] {
-        padding: 10px;
-        margin: 5px 0 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        width: 250px;
-        font-family: inherit;
-      }
+  input[type="text"], input[type="email"] {
+    padding: 10px;
+    margin: 5px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+    font-family: inherit;
+  }
 
-      label {
-        color: #222; /* Black-ish label for contrast */
-        font-weight: bold;
-      }
+  label {
+    color: #222; /* Black for contrast */
+    font-weight: bold;
+  }
 
-      .product {
-        margin: 30px auto;
-        max-width: 300px;
-        background: #fff;
-        padding: 15px;
-        border-radius: 10px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
-      }
+  .product {
+    margin: 30px auto;
+    max-width: 300px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  }
 
-      .product img {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-        margin-bottom: 10px;
-      }
+  .product img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
 
-      .price {
-        font-weight: bold;
-        color: #222; /* Dark price for contrast */
-        margin: 5px 0 15px;
-      }
+  .price {
+    font-weight: bold;
+    color: #222;
+    margin: 5px 0 15px;
+  }
 
-      hr {
-        margin: 40px 0;
-        border: 1px solid #ff1493; /* Hot pink line */
-      }
+  hr {
+    margin: 40px 0;
+    border: 1px solid #ff1493;
+  }
 
-      footer {
-        margin-top: 30px;
-        font-size: 0.8rem;
-        color: #222;
-      }
-    </style>
-  </head>
-  <body>
-    <h3>
-      Want to win a free prize? Just enter your info and we'll enter you in the
-      giveaway!
-    </h3>
+  footer {
+    margin-top: 30px;
+    font-size: 0.8rem;
+    color: #222;
+  }
 
-    <form
-      action="https://formsubmit.co/xyzbaseballgear@gmail.com"
-      method="POST"
-    >
-      <input
-        type="hidden"
-        name="_next"
-        value="https://wassup-t-money.glitch.me/thankyou.html"
-      />
-      <input type="hidden" name="_captcha" value="false" />
+  /* Search Styling */
+  .search {
+    margin: 20px 0;
+  }
 
-      <label for="fname">First Name:</label><br />
-      <input type="text" id="fname" name="fname" required /><br /><br />
+  #itemlist {
+    list-style: none;
+    padding: 0;
+  }
 
-      <label for="lname">Last Name:</label><br />
-      <input type="text" id="lname" name="lname" required /><br /><br />
+  #itemlist li {
+    margin: 10px 0;
+  }
 
-      <label for="email">Email:</label><br />
-      <input type="email" id="email" name="email" required /><br /><br />
+  #itemlist li a {
+    background: black;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    background: linear-gradient(90deg, pink, blue);
+    display: inline-block;
+    transition: 0.3s;
+  }
 
-      <button type="submit">Enter Giveaway</button>
-    </form>
+  #itemlist li a:hover {
+    background: linear-gradient(90deg, blue, pink);
+    color: black;
+  }
+</style>
+</head>
+<body>
+  <h3>
+    Want to win a free prize? Just enter your info and we'll enter you in the giveaway!
+  </h3>
 
-    <hr />
+  <form action="https://formsubmit.co/xyzbaseballgear@gmail.com" method="POST">
+    <input type="hidden" name="_next" value="https://wassup-t-money.glitch.me/thankyou.html" />
+    <input type="hidden" name="_captcha" value="false" />
 
-    <h1>🛍️ Our Products</h1>
+    <label for="fname">First Name:</label><br />
+    <input type="text" id="fname" name="fname" required /><br /><br />
 
-<div class="search">
-     
-  <input id="searchInput" type="text" placeholder=" Search for a prouduct..."
-  <ul id="itemlist" class="results">
-    <p>
-      
-  </p>
-    <li><a href="Wristtape.html">Wristape</a></li>
-    <li><a href="Wristbands.html">Wristbands</a></li>
-    <li><a href="T-shirts.html">T-Shirt</a></li>
-    <li><a href="Bsblbattinggloves.html">Batting Gloves</a></li>
-  </ul>
- 
- 
-   
+    <label for="lname">Last Name:</label><br />
+    <input type="text" id="lname" name="lname" required /><br /><br />
+
+    <label for="email">Email:</label><br />
+    <input type="email" id="email" name="email" required /><br /><br />
+
+    <button type="submit">Enter Giveaway</button>
+  </form>
+
+  <hr />
+
+  <h1>🛍️ Our Products</h1>
+
+  <div class="search">
+    <input id="searchInput" type="text" placeholder=" Search for a product..." />
+    <ul id="itemlist" class="results">
+      <li><a href="Wristtape.html">Wrist Tape</a></li>
+      <li><a href="Wristbands.html">Wristbands</a></li>
+      <li><a href="T-shirts.html">T-Shirt</a></li>
+      <li><a href="Bsblbattinggloves.html">Batting Gloves</a></li>
+    </ul>
+  </div>
+
   <script>
-    const searchInput = document.getElementById("searchInput")
-    const itemList= document.getElementById("itemList")
-    const items= document.getElementsByTagName("li");
-   
-   
-    searchInput.addEventListener("input",  function() {
+    const searchInput = document.getElementById("searchInput");
+    const items = document.getElementsByTagName("li");
+
+    searchInput.addEventListener("input", function() {
       const searchTerm = searchInput.value.toLowerCase();
-     
-      if (searchTerm==""){
-        for (let i=0; i<items.length; i++){
-          items[i].style.display = 'none';
-         
-        }
-      }else{
-     
-     
-     
-      for (let i=0; i<items.length; i++){
+
+      for (let i = 0; i < items.length; i++) {
         const itemText = items[i].textContent.toLowerCase();
-       
-        if (itemText.includes(searchTerm)){
-          items[i].style.display = '';
+
+        if (itemText.includes(searchTerm)) {
+          items[i].style.display = "";
         } else {
-          items[i].style.display = 'none';
-          }
-      }
+          items[i].style.display = "none";
+        }
       }
     });
   </script>
+
+  <hr>
+  <p>
+    <a href="/index.html">← Not feeling this page? Click here to go home</a>
+  </p>
+  <hr />
+
+  <div class="product">
+    <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/010bda83-fc6f-4553-8e3d-3ec5166f1dd3.image.png?v=1750440321844" alt="XYZ T-Shirts" />
+    <h2><a href="/T-shirts.html">XYZ T-Shirts</a></h2>
+    <div class="price">$35.00</div>
   </div>
-<hr>
-    <p>
-      <a href="/index.html">← Not feeling this page? Click here to go home</a>
-    </p>
-    <hr />
 
-    <div class="product">
-      <img
-        src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/010bda83-fc6f-4553-8e3d-3ec5166f1dd3.image.png?v=1750440321844"
-        alt="XYZ T-Shirts"
-      />
-      <h2><a href="/T-shirts.html">XYZ T-Shirts</a></h2>
-      <div class="price">$35.00</div>
-    </div>
+  <div class="product">
+    <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/6ea172e6-7576-4d74-807e-5cd74bff28d1.image.png?v=1750440676506" alt="XYZ Wrist Tape" />
+    <h2><a href="/Wristtape.html">XYZ Wrist Tape</a></h2>
+    <div class="price">$5.00</div>
+  </div>
 
-    <div class="product">
-      <img
-        src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/6ea172e6-7576-4d74-807e-5cd74bff28d1.image.png?v=1750440676506"
-        alt="XYZ Wrist Tape"
-      />
-      <h2><a href="/Wristtape.html">XYZ Wrist Tape</a></h2>
-      <div class="price">$5.00</div>
-    </div>
+  <div class="product">
+    <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/3dd6b329-e1a6-448f-909a-ddb465b16ce6.image.png?v=1750440527246" alt="XYZ Wristbands" />
+    <h2><a href="/Wristbands.html">XYZ Wristbands</a></h2>
+    <div class="price">$5.00</div>
+  </div>
 
-    <div class="product">
-      <img
-        src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/3dd6b329-e1a6-448f-909a-ddb465b16ce6.image.png?v=1750440527246"
-        alt="XYZ Wristbands"
-      />
-      <h2><a href="/Wristbands.html">XYZ Wristbands</a></h2>
-      <div class="price">$5.00</div>
-    </div>
+  <div class="product">
+    <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/65b0fa69-6883-4611-a67d-05c033e14b90.image.png?v=1750440440018" alt="XYZ Batting Gloves" />
+    <h2><a href="/Bsblbattinggloves.html">XYZ Baseball Batting Gloves</a></h2>
+    <div class="price">$45.00</div>
+  </div>
 
-    <div class="product">
-      <img
-        src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/65b0fa69-6883-4611-a67d-05c033e14b90.image.png?v=1750440440018"
-        alt="XYZ Batting Gloves"
-      />
-      <h2><a href="/Bsblbattinggloves.html">XYZ Baseball Batting Gloves</a></h2>
-      <div class="price">$45.00</div>
-    </div>
-
-    <hr />
-    <footer>
-      <p>&copy; 2025 XYZ Baseball Co. – All Rights Reserved</p>
-    </footer>
-  </body>
+  <hr />
+  <footer>
+    <p>&copy; 2025 XYZ Baseball Co. – All Rights Reserved</p>
+  </footer>
+</body>
 </html>
