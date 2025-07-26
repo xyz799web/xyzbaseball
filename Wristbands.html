@@ -1,62 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>XYZ Wrist Bands</title>
-    <style>
-      body {
-        background-color: #add8e6; /* Light blue */
-        color: #ff1493; /* Hot pink */
-        font-family: "Courier New", monospace;
-        text-align: center;
-        padding: 40px 20px;
-        margin: 0;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XYZ Wrist Bands</title>
+  <style>
+    body {
+      background-color: #add8e6; /* Light blue */
+      color: #ff1493; /* Hot pink */
+      font-family: "Courier New", monospace;
+      text-align: center;
+      padding: 30px 20px;
+      margin: 0;
+    }
 
+    a {
+      color: #ff1493;
+      font-size: 1.2rem;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 25px;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #ff69b4;
+      text-decoration: underline;
+    }
+
+    img {
+      width: 100%;
+      max-width: 300px; /* ✅ Fits nicely on mobile */
+      height: auto;
+      border: 5px solid black;
+      border-radius: 12px;
+      margin: 20px auto;
+      display: block;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-top: 10px;
+      color: #ff1493;
+    }
+
+    /* ✅ Buy Now button styling */
+    .buy-button {
+      background-color: #ff1493; /* Hot pink */
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      margin-top: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .buy-button:hover {
+      background-color: #ff69b4; /* Lighter pink */
+    }
+
+    /* ✅ Responsive adjustments */
+    @media (max-width: 600px) {
       a {
-        color: #ff1493;
-        font-size: 4.0rem;
-        text-decoration: none;
-        display: block;
-        margin-bottom: 30px;
-        transition: color 0.3s ease;
+        font-size: 1rem;
       }
-
-      a:hover {
-        color: #ff69b4;
-        text-decoration: underline;
-      }
-
-      img {
-        width: 1000px;
-        height: 1000px;
-        border: 5px solid black;
-        border-radius: 10px;
-        margin-top: 20px;
-      }
-
       h2 {
-        font-size: 2rem;
-        margin-top: 15px;
-        color: #ff1493;
+        font-size: 1.8rem;
       }
-    </style>
-  </head>
-  <body>
-    <a href="Browseourproducts.html">
-      Wrist bands aren't your quality? No worries, let's go see the other
-      products!
-    </a>
+    }
+  </style>
+</head>
+<body>
+  <a href="Browseourproducts.html">
+    Wrist bands aren't your quality? No worries, let's go see the other products!
+  </a>
 
-    <img
-      src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/3dd6b329-e1a6-448f-909a-ddb465b16ce6.image.png?v=1750440527246"
-      alt="XYZ Wrist Bands"
-    />
+  <img
+    src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/3dd6b329-e1a6-448f-909a-ddb465b16ce6.image.png?v=1750440527246"
+    alt="XYZ Wrist Bands"
+  />
 
-    <h2>
-      XYZ Wrist Bands
-      <br />
-      $5
-    </h2>
-  </body>
+  <h2>
+    XYZ Wrist Bands
+    <br />
+    $5
+  </h2>
+
+  <!-- ✅ Buy Now button -->
+  <button class="buy-button" onclick="alert('Buying feature coming soon!')">Buy Now</button>
+</body>
 </html>
