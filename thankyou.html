@@ -1,35 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Thank You!</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        padding: 50px;
-        background-color: #f4f4f4;
-        color: #333;
-      }
-      h1 {
-        font-size: 2.5rem;
-        margin-bottom: 20px;
-      }
-      p {
-        font-size: 1.2rem;
-        color: #555;
-      }
-    </style>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <title>Thank You!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #add8e6 0%, #ff69b4 100%);
+      color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #ff69b4cc;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h1 {
+      color: #ff1493; /* hot pink darker */
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
     <h1>Thank you for your time!</h1>
     <p>You will be redirected back shortly...</p>
+  </div>
 
-    <script>
-      setTimeout(() => {
-        window.location.href =
-          document.referrer || "https://wassup-t-money.glitch.me/";
-      }, 3000);
-    </script>
-  </body>
+  <script>
+    setTimeout(() => {
+      window.location.href =
+        document.referrer || "https://wassup-t-money.glitch.me/";
+    }, 3000);
+  </script>
+</body>
 </html>
