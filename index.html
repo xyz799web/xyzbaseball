@@ -1,145 +1,230 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>XYZ home-page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <meta charset="UTF-8" />
+  <title>XYZ | Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      /* Body Styling */
-      body {
-        font-family: "Courier New", monospace;
-        background-color: #add8e6; /* Light blue background */
-        color: #ff1493; /* Hot pink font */
-        text-align: center;
-        padding: 60px 20px;
-      }
+    body {
+      font-family: "Courier New", monospace;
+      background-color: #add8e6; /* Light blue */
+      color: #ff69b4; /* Hot pink */
+      padding: 20px;
+      text-align: center;
+    }
 
-      h1,
-      h2 {
-        font-size: 2.5rem;
-        color: #ff1493; /* Hot pink color for the header */
-      }
+    header {
+      margin-bottom: 40px;
+    }
 
-      /* Countdown Styling */
-      #countdown {
-        font-size: 3rem;
-        margin-top: 20px;
-        background: #222; /* Dark background for the countdown */
-        padding: 20px 40px;
-        border-radius: 10px;
-        display: inline-block;
-        box-shadow: 0 0 15px #0ff; /* Cyan glow */
-        color: white;
-      }
+    header h1 {
+      font-size: 3rem;
+      color: #ff69b4;
+    }
 
-      /* Link Styling */
-      a {
-        text-decoration: none;
-        color: #00bfff; /* Light blue */
-        font-size: 1.2rem;
-        margin: 10px 0;
-        display: inline-block;
-        transition: color 0.3s ease;
-      }
+    nav a {
+      display: inline-block;
+      background-color: #000;
+      color: #fff;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
 
-      a:hover {
-        color: #ff1493; /* Hot pink hover effect */
-      }
+    nav a:hover {
+      background-color: #ff69b4;
+    }
 
-      /* About Us Section */
-      section {
-        margin: 40px auto;
-        max-width: 800px;
-        padding: 20px;
-        background-color: #222; /* Dark background for sections */
-        border-radius: 10px;
-        box-shadow: 0 0 15px #0ff; /* Cyan glow */
-      }
+    .countdown-container {
+      margin: 30px 0;
+    }
 
-      section p {
-        font-size: 1rem;
-        line-height: 1.6;
-        color: #fff; /* White text for readability */
-        text-align: justify;
-      }
+    #countdown {
+      font-size: 2.5rem;
+      background: #000;
+      color: #fff;
+      padding: 20px 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ffff;
+      display: inline-block;
+    }
 
-      section hr {
-        border: 1px solid #444; /* Dark divider line */
-        margin: 20px 0;
-      }
+    section {
+      background: #000;
+      color: #fff;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ffff;
+      text-align: left;
+    }
 
-      /* Form Styling */
-      form {
-        max-width: 600px;
-        margin: 30px auto;
-        padding: 20px;
-        background-color: #222; /* Dark background for form */
-        border-radius: 10px;
-        box-shadow: 0 0 15px #0ff; /* Cyan glow */
-      }
+    section p {
+      line-height: 1.6;
+    }
 
-      form input,
-      form textarea {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border-radius: 8px;
-        border: 1px solid #444;
-        background-color: #333;
-        color: white;
-      }
+    iframe {
+      width: 100%;
+      max-width: 300px;
+      height: 200px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
 
-      form input:focus,
-      form textarea:focus {
-        outline: none;
-        border-color: #ff1493; /* Hot pink border on focus */
-      }
+    form {
+      background: #000;
+      color: #fff;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ffff;
+      text-align: left;
+    }
 
-      form button {
-        padding: 10px 20px;
-        background-color: #ff1493; /* Hot pink button */
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 1rem;
-        transition: background-color 0.3s ease;
-      }
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #444;
+      background: #333;
+      color: #fff;
+    }
 
-      form button:hover {
-        background-color: #ff69b4; /* Lighter pink on hover */
-      }
+    form input:focus,
+    form textarea:focus {
+      border-color: #ff69b4;
+      outline: none;
+    }
 
-      /* Video Section */
-      iframe {
-        border-radius: 10px;
-        box-shadow: 0 0 15px #0ff; /* Cyan glow */
-      }
+    form button {
+      padding: 10px 20px;
+      background-color: #ff69b4;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
 
-      /* Header */
-      header {
-        margin-bottom: 40px;
-      }
+    form button:hover {
+      background-color: #ff1493;
+    }
 
-      header h1 {
-        font-size: 4rem;
-        color: #ff1493; /* Hot pink for the header */
-      }
-    </style>
-  </head>
-  <body>
-  <h1>Buy VIP Membership</h1>
-  <input id="email" type="email" placeholder="Enter your email" />
-  <button id="buy-btn">Buy Membership for $20</button>
+    .vip-box {
+      margin: 30px auto;
+      max-width: 500px;
+    }
+
+    input[type="email"] {
+      padding: 10px;
+      width: 80%;
+      max-width: 300px;
+      border-radius: 5px;
+      border: 1px solid #000;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ff1493;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>XYZ</h1>
+    <nav>
+      <a href="About-us.html">About Our Team</a>
+      <a href="Browseourproducts.html">Browse & Buy</a>
+    </nav>
+  </header>
+
+  <div class="vip-box">
+    <h2>🎉 Become a VIP Member</h2>
+    <input id="email" type="email" placeholder="Enter your email" />
+    <button id="buy-btn">Buy Membership for $20</button>
+  </div>
+
+  <div class="countdown-container">
+    <h2>🔥 Limited Drop Coming In:</h2>
+    <div id="countdown">Loading...</div>
+  </div>
+
+  <section>
+    <p>
+      XYZ is a small but fiercely passionate company founded by two lifelong friends with one goal — to bring bold, high-energy baseball and sports apparel to players and fans who live for the game. Whether you’re stepping up to the plate, cheering from the stands, or just repping the sport you love, XYZ’s gear is designed to help you wear your heart—and your game—on your sleeve.
+    </p>
+  </section>
+
+  <section style="text-align:center;">
+    <iframe src="https://www.youtube.com/embed/ni82aJnLbEE" allowfullscreen></iframe>
+    <br />
+    <a href="https://www.youtube.com/shorts/ni82aJnLbEE?feature=share" target="_blank">Check out our YouTube Channel!</a>
+  </section>
+
+  <form action="https://formsubmit.co/xyzbaseballgear@gmail.com" method="POST">
+    <input type="hidden" name="_next" value="https://wassup-t-money.glitch.me/thankyou.html" />
+    <input type="hidden" name="_captcha" value="false" />
+    <input type="text" name="name" placeholder="Your Name (optional)" />
+    <input type="text" name="product" placeholder="What do you want added?" required />
+    <input type="number" name="rating" placeholder="Rating from 1–5" min="1" max="5" required />
+    <textarea name="review" placeholder="Write your review here..." rows="4" required></textarea>
+    <button type="submit">Submit Review</button>
+  </form>
+
+  <div class="vip-box">
+    <h3>🎁 Access VIP Content</h3>
+    <input id="vip-email" type="email" placeholder="Enter your email" />
+    <button id="vip-btn">Go to VIP Content</button>
+  </div>
 
   <script>
+    // Countdown
+    const targetDate = new Date("2025-06-25T18:00:00").getTime();
+    const countdown = document.getElementById("countdown");
+
+    const updateCountdown = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        clearInterval(updateCountdown);
+        countdown.innerHTML = "🚨 DROP IS LIVE!";
+        return;
+      }
+
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    }, 1000);
+
+    // Stripe Membership Checkout
     document.getElementById('buy-btn').onclick = async () => {
       const email = document.getElementById('email').value;
       if (!email) return alert('Please enter your email');
@@ -152,131 +237,18 @@
 
       const data = await response.json();
       if (data.url) {
-        window.location = data.url; // Redirect to Stripe Checkout
+        window.location = data.url;
       } else {
         alert('Something went wrong');
       }
     };
+
+    // VIP Content Access
+    document.getElementById('vip-btn').onclick = () => {
+      const email = document.getElementById('vip-email').value;
+      if (!email) return alert('Please enter your email');
+      window.location = `/vip-content?email=${encodeURIComponent(email)}`;
+    };
   </script>
-    <header>
-      <h1>XYZ</h1>
-   </header> 
-<a href="About-us.html" style="background-color: black; color: white; padding: 5px 10px; text-decoration: none;">About our team!</a>
-   <br> 
-    <a href="Browseourproducts.html" style="background-color: black; color: white; padding: 5px 10px; text-decoration: none;">Browse and Buy!</a>
-
-    
-
-    <h2>🔥 Limited Drop Coming In:</h2>
-    <div id="countdown">Loading...</div>
-
-    <script>
-      // Set your target date here (YYYY-MM-DDTHH:MM:SS format)
-      const targetDate = new Date("2025-06-25T18:00:00").getTime();
-
-      const countdown = document.getElementById("countdown");
-
-      const updateCountdown = setInterval(() => {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-
-        if (distance < 0) {
-          clearInterval(updateCountdown);
-          countdown.innerHTML = "🚨 DROP IS LIVE!";
-          return;
-        }
-
-        const hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        countdown.innerHTML = `${String(hours).padStart(2, "0")}:${String(
-          minutes
-        ).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
-      }, 1000);
-    </script>
-
-    <section>
-      
-      
-
-      <hr />
-      <p>
-        XYZ is a small but fiercely passionate company founded by two lifelong
-        friends with one goal—to bring bold, high-energy baseball and sports
-        apparel to players and fans who live for the game. Every piece they
-        create is made to fuel your passion, your hustle, and your love for
-        baseball. Whether you’re stepping up to the plate, cheering from the
-        stands, or just repping the sport you love, XYZ’s gear is designed to
-        help you wear your heart—and your game—on your sleeve...
-      </p>
-    </section>
-
-    <section>
-      <iframe
-        width="200"
-        height="250"
-        src="https://www.youtube.com/embed/ni82aJnLbEE"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
-      <br />
-      <a href="https://www.youtube.com/shorts/ni82aJnLbEE?feature=share"
-        >Check out our YT channel!</a
-      >
-    </section>
-   
-      <form
-        action="https://formsubmit.co/xyzbaseballgear@gmail.com"
-        method="POST"
-      >
-        <input
-          type="hidden"
-          name="_next"
-          value="https://wassup-t-money.glitch.me/thankyou.html"
-        />
-        <input type="hidden" name="_captcha" value="false" />
-
-        <input type="text" name="name" placeholder="Your Name (optional)" />
-        <input
-          type="text"
-          name="product"
-          placeholder="What do you want added?"
-          required
-        />
-        <input
-          type="number"
-          name="rating"
-          placeholder="Rating from 1–5"
-          min="1"
-          max="5"
-          required
-        />
-        <textarea
-          name="review"
-          placeholder="Write your review here..."
-          rows="4"
-          required
-        ></textarea>
-
-        <button type="submit">Submit Review</button>
-      </form>
-    </section>
-  <input id="vip-email" type="email" placeholder="Enter your email to access VIP content" />
-<button id="vip-btn">Go to VIP Content</button>
-
-<script>
-  document.getElementById('vip-btn').onclick = () => {
-    const email = document.getElementById('vip-email').value;
-    if (!email) return alert('Please enter your email');
-
-    // Redirect to VIP page with email as query param
-    // Adjust the URL if your Glitch app has a different domain
-    window.location = `/vip-content?email=${encodeURIComponent(email)}`;
-  };
-</script>
-  </body>
+</body>
 </html>
