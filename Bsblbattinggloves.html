@@ -2,29 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>XYZ Baseball Batting Gloves</title>
   <style>
     body {
-      background-color: #add8e6; /* Light blue background */
+      background-color: #add8e6; /* Light blue */
       font-family: "Courier New", monospace;
       color: #ff1493; /* Hot pink text */
       text-align: center;
       padding: 30px 20px;
       margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
     }
 
     a {
-      color: #ff1493; /* Hot pink links */
+      color: #ff1493;
       font-size: 1.2rem;
       text-decoration: none;
-      display: block;
       margin-bottom: 25px;
+      transition: color 0.3s ease;
+      max-width: 320px;
+      display: inline-block;
     }
 
-    a:hover {
+    a:hover, a:focus {
+      color: #ff69b4;
       text-decoration: underline;
-      color: #ff69b4; /* Lighter pink on hover */
+      outline: none;
     }
 
     img {
@@ -35,15 +43,46 @@
       border-radius: 12px;
       margin: 20px auto;
       display: block;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     h2 {
       font-size: 2rem;
       color: #ff1493;
       margin-top: 10px;
+      margin-bottom: 20px;
     }
 
-    /* ✅ Responsive text adjustments for small screens */
+    /* Buttons container */
+    .buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 320px;
+      margin-bottom: 40px;
+    }
+
+    button {
+      background-color: #ff1493;
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: "Courier New", monospace;
+      transition: background-color 0.3s ease;
+      flex: 1 1 140px;
+      min-width: 140px;
+    }
+
+    button:hover, button:focus {
+      background-color: #ff69b4;
+      outline: none;
+    }
+
+    /* Responsive adjustments */
     @media (max-width: 600px) {
       h2 {
         font-size: 1.8rem;
@@ -52,13 +91,20 @@
         font-size: 1rem;
         padding: 0 10px;
       }
+      .buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+      button {
+        flex: 1 1 auto;
+        min-width: auto;
+      }
     }
   </style>
 </head>
 <body>
-  <a href="Browseourproducts.html">
-    Batting gloves don't have as much style as you would want? No worries,
-    let's go see the other products!
+  <a href="Browseourproducts.html" aria-label="Go back to browse products">
+    ← Batting gloves not quite your style? Check out our other products!
   </a>
 
   <img
@@ -67,9 +113,26 @@
   />
 
   <h2>
-    XYZ Batting Gloves
-    <br />
+    XYZ Batting Gloves<br />
     $45
   </h2>
+
+  <div class="buttons">
+    <button id="buyNowBtn" aria-label="Buy XYZ Batting Gloves now">Buy Now</button>
+    <button id="addToCartBtn" aria-label="Add XYZ Batting Gloves to cart">Add to Cart</button>
+  </div>
+
+  <script>
+    document.getElementById("buyNowBtn").addEventListener("click", () => {
+      alert("Thanks for choosing to buy! You will be redirected to the checkout page.");
+      // Simulate redirect to checkout page (replace URL with your actual checkout page)
+      window.location.href = "checkout.html";
+    });
+
+    document.getElementById("addToCartBtn").addEventListener("click", () => {
+      alert("XYZ Batting Gloves added to your cart!");
+      // Here you can add your cart functionality or localStorage/cart API code
+    });
+  </script>
 </body>
 </html>
