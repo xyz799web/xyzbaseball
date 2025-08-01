@@ -21,11 +21,15 @@
       display: block;
       margin-bottom: 25px;
       transition: color 0.3s ease;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    a:hover {
+    a:hover, a:focus {
       color: #ff69b4;
       text-decoration: underline;
+      outline: none;
     }
 
     img {
@@ -36,32 +40,46 @@
       border-radius: 12px;
       margin: 20px auto;
       display: block;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     h2 {
       font-size: 2rem;
       margin-top: 10px;
       color: #ff1493;
+      margin-bottom: 20px;
     }
 
-    /* ✅ Buy Now button styling */
-    .buy-button {
+    /* Buttons container */
+    .buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 320px;
+      margin: 0 auto 40px auto;
+    }
+
+    button {
       background-color: #ff1493; /* Hot pink */
       color: white;
       border: none;
-      padding: 12px 25px;
-      font-size: 1.2rem;
+      padding: 12px 24px;
+      font-size: 1.1rem;
       border-radius: 8px;
-      margin-top: 15px;
       cursor: pointer;
+      font-family: "Courier New", monospace;
       transition: background-color 0.3s ease;
+      flex: 1 1 140px;
+      min-width: 140px;
     }
 
-    .buy-button:hover {
+    button:hover, button:focus {
       background-color: #ff69b4; /* Lighter pink */
+      outline: none;
     }
 
-    /* ✅ Responsive adjustments */
+    /* Responsive adjustments */
     @media (max-width: 600px) {
       a {
         font-size: 1rem;
@@ -69,11 +87,19 @@
       h2 {
         font-size: 1.8rem;
       }
+      .buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+      button {
+        flex: 1 1 auto;
+        min-width: auto;
+      }
     }
   </style>
 </head>
 <body>
-  <a href="Browseourproducts.html">
+  <a href="Browseourproducts.html" aria-label="Go back to browse products">
     Wrist bands aren't your quality? No worries, let's go see the other products!
   </a>
 
@@ -88,7 +114,22 @@
     $5
   </h2>
 
-  <!-- ✅ Buy Now button -->
-  <button class="buy-button" onclick="alert('Buying feature coming soon!')">Buy Now</button>
+  <div class="buttons">
+    <button id="buyNowBtn" aria-label="Buy XYZ Wrist Bands now">Buy Now</button>
+    <button id="addToCartBtn" aria-label="Add XYZ Wrist Bands to cart">Add to Cart</button>
+  </div>
+
+  <script>
+    document.getElementById("buyNowBtn").addEventListener("click", () => {
+      alert("Thanks for choosing to buy! You will be redirected to the checkout page.");
+      // Replace with your actual checkout page URL:
+      window.location.href = "checkout.html";
+    });
+
+    document.getElementById("addToCartBtn").addEventListener("click", () => {
+      alert("XYZ Wrist Bands added to your cart!");
+      // You can add cart functionality here or localStorage/cart API code
+    });
+  </script>
 </body>
 </html>
