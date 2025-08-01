@@ -192,10 +192,24 @@
     <input id="email" type="email" placeholder="Enter your email" />
     <button id="buy-btn">Buy Membership for $20</button>
   </div>
+<!-- ✅ VIDEO BACKGROUND FEATURED SECTION -->
+<div style="position: relative; z-index: 0;">
+  <video autoplay muted loop playsinline style="
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.2;">
+    <source src="https://www.videvo.net/videvo_files/converted/2013_08/videos/Baseball_Field.mp422012.webm" type="video/webm">
+    <!-- Fallback text -->
+    Your browser does not support the video tag.
+  </video>
 
-  <!-- ✅ FEATURED PRODUCTS SECTION -->
-  <h2 style="margin-top: 60px;">🔥 Featured Gear</h2>
-  <div class="featured-products">
+  <h2 style="margin-top: 60px; position: relative; z-index: 1;">🔥 Featured Gear</h2>
+  <div class="featured-products" style="position: relative; z-index: 1;">
     <div class="product">
       <img src="https://via.placeholder.com/250x150?text=Batting+Gloves" alt="Batting Gloves" />
       <h3>Batting Gloves</h3>
@@ -215,6 +229,8 @@
       <p><strong>$20.00</strong></p>
     </div>
   </div>
+</div>
+
 
   <section>
     <p>
