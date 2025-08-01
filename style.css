@@ -1,6 +1,52 @@
-Body {
-  background-color: hotpink;
-    color: 
-      
-      blue;
-    font-size: 17px
+header {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+  color: white;
+}
+
+#bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  object-fit: cover;
+  filter: brightness(0.5);
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.header-content h1 {
+  font-size: 3rem;
+  color: hotpink;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px black;
+}
+
+nav a {
+  color: white;
+  margin: 0 12px;
+  padding: 10px 15px;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  text-shadow: 0 0 5px black;
+}
+
+nav a:hover {
+  background: hotpink;
+  color: black;
+}
+
