@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Giveaway + Shop – XYZ Baseball</title>
 <style>
+  /* Reset */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
   body {
     font-family: "Courier New", monospace;
     background-color: #add8e6; /* Light blue */
@@ -12,6 +17,10 @@
     padding: 20px;
     color: #ff1493; /* Hot pink text */
     margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
 
   h1, h2, h3 {
@@ -19,74 +28,55 @@
     margin-bottom: 15px;
   }
 
+  a {
+    color: #ff1493;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+  a:hover, a:focus {
+    color: #ff69b4;
+  }
+
   button {
     padding: 12px 18px;
     background-color: #ff1493;
     color: white;
-    font-size: 16px;
+    font-size: 1rem;
     border: none;
     cursor: pointer;
     border-radius: 6px;
     transition: background-color 0.3s ease;
     width: 90%;
     max-width: 300px;
-  }
-
-  button:hover {
-    background-color: #ff69b4;
-  }
-
-  a {
-    display: inline-block;
     margin-top: 10px;
-    color: #ff1493;
-    text-decoration: underline;
-    transition: color 0.3s ease;
   }
-
-  a:hover {
-    color: #ff69b4;
-  }
-
-  input[type="text"], input[type="email"] {
-    padding: 12px;
-    margin: 8px 0 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 90%;
-    max-width: 300px;
-    font-size: 16px;
-    font-family: inherit;
+  button:hover, button:focus {
+    background-color: #ff69b4;
   }
 
   label {
     color: #222;
     font-weight: bold;
     display: block;
-    margin-top: 10px;
+    margin: 10px 0 5px;
+    text-align: left;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .product {
-    margin: 20px auto;
-    background: #fff;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    max-width: 90%;
-  }
-
-  .product img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 10px;
-  }
-
-  .price {
-    font-weight: bold;
-    color: #222;
-    margin: 5px 0 15px;
-    font-size: 18px;
+  input[type="text"], input[type="email"] {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 90%;
+    max-width: 320px;
+    font-size: 1rem;
+    font-family: inherit;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   hr {
@@ -94,22 +84,29 @@
     border: 1px solid #ff1493;
   }
 
-  footer {
-    margin-top: 30px;
-    font-size: 0.9rem;
-    color: #222;
-  }
-
   /* Search Styling */
   .search {
-    margin: 20px auto;
+    margin: 20px auto 40px;
     width: 90%;
     max-width: 400px;
+  }
+
+  #searchInput {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    font-family: inherit;
   }
 
   #itemlist {
     list-style: none;
     padding: 0;
+    margin-top: 15px;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   #itemlist li {
@@ -117,7 +114,7 @@
   }
 
   #itemlist li a {
-    background: linear-gradient(90deg, pink, blue);
+    background: linear-gradient(90deg, #ff1493, #00bfff);
     color: white;
     padding: 10px 15px;
     border-radius: 6px;
@@ -125,47 +122,107 @@
     font-weight: bold;
     display: inline-block;
     width: 100%;
-    max-width: 300px;
-    transition: 0.3s;
+    transition: background 0.3s ease, color 0.3s ease;
   }
 
-  #itemlist li a:hover {
-    background: linear-gradient(90deg, blue, pink);
+  #itemlist li a:hover,
+  #itemlist li a:focus {
+    background: linear-gradient(90deg, #00bfff, #ff1493);
     color: black;
+    outline: none;
   }
 
-  /* Responsive Grid for Products */
-  @media (min-width: 600px) {
-    .products-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
+  /* Products Grid */
+  .products-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 960px;
+    margin: 0 auto 40px;
+  }
+
+  .product {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 300px;
+    flex: 1 1 calc(45% - 20px);
+    text-align: left;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .product:hover, .product:focus-within {
+    box-shadow: 0 6px 20px rgba(255,20,147,0.6);
+  }
+
+  .product img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .product h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+  }
+
+  .product h2 a {
+    color: #ff1493;
+    text-decoration: none;
+  }
+  .product h2 a:hover, .product h2 a:focus {
+    text-decoration: underline;
+  }
+
+  .price {
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+  }
+
+  footer {
+    margin-top: auto;
+    font-size: 0.9rem;
+    color: #222;
+    padding: 10px 0;
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 599px) {
     .product {
-      flex: 1 1 calc(45% - 20px);
-      max-width: 300px;
+      max-width: 90%;
+      flex: 1 1 100%;
+    }
+
+    label, input[type="text"], input[type="email"], button {
+      max-width: 100%;
     }
   }
 </style>
 </head>
 <body>
+
   <h3>
     Want to win a free prize? Just enter your info and we'll enter you in the giveaway!
   </h3>
 
-  <form action="https://formsubmit.co/xyzbaseballgear@gmail.com" method="POST">
+  <form action="https://formsubmit.co/xyzbaseballgear@gmail.com" method="POST" novalidate>
     <input type="hidden" name="_next" value="https://wassup-t-money.glitch.me/thankyou.html" />
     <input type="hidden" name="_captcha" value="false" />
 
     <label for="fname">First Name:</label>
-    <input type="text" id="fname" name="fname" required />
+    <input type="text" id="fname" name="fname" required aria-required="true" />
 
     <label for="lname">Last Name:</label>
-    <input type="text" id="lname" name="lname" required />
+    <input type="text" id="lname" name="lname" required aria-required="true" />
 
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required />
+    <input type="email" id="email" name="email" required aria-required="true" />
 
     <button type="submit">Enter Giveaway</button>
   </form>
@@ -174,68 +231,68 @@
 
   <h1>🛍️ Our Products</h1>
 
-  <div class="search">
-    <input id="searchInput" type="text" placeholder=" Search for a product..." />
-    <ul id="itemlist" class="results">
-      <li><a href="Wristtape.html">Wrist Tape</a></li>
-      <li><a href="Wristbands.html">Wristbands</a></li>
-      <li><a href="T-shirts.html">T-Shirt</a></li>
-      <li><a href="Bsblbattinggloves.html">Batting Gloves</a></li>
+  <div class="search" role="search" aria-label="Search products">
+    <input id="searchInput" type="text" placeholder="Search for a product..." aria-label="Search products" />
+    <ul id="itemlist" class="results" role="list">
+      <li role="listitem"><a href="Wristtape.html">Wrist Tape</a></li>
+      <li role="listitem"><a href="Wristbands.html">Wristbands</a></li>
+      <li role="listitem"><a href="T-shirts.html">T-Shirt</a></li>
+      <li role="listitem"><a href="Bsblbattinggloves.html">Batting Gloves</a></li>
     </ul>
   </div>
 
-  <script>
-    const searchInput = document.getElementById("searchInput");
-    const items = document.getElementsByTagName("li");
-
-    searchInput.addEventListener("input", function() {
-      const searchTerm = searchInput.value.toLowerCase();
-      for (let i = 0; i < items.length; i++) {
-        const itemText = items[i].textContent.toLowerCase();
-        if (itemText.includes(searchTerm)) {
-          items[i].style.display = "";
-        } else {
-          items[i].style.display = "none";
-        }
-      }
-    });
-  </script>
-
-  <hr>
-  <p>
-    <a href="index.html">← Not feeling this page? Click here to go home</a>
-  </p>
   <hr />
 
-  <div class="products-container">
-    <div class="product">
+  <p>
+    <a href="index.html" aria-label="Back to Home page">← Not feeling this page? Click here to go home</a>
+  </p>
+
+  <hr />
+
+  <div class="products-container" aria-live="polite">
+    <article class="product" tabindex="0">
       <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/010bda83-fc6f-4553-8e3d-3ec5166f1dd3.image.png?v=1750440321844" alt="XYZ T-Shirts" />
       <h2><a href="T-shirts.html">XYZ T-Shirts</a></h2>
       <div class="price">$35.00</div>
-    </div>
+    </article>
 
-    <div class="product">
+    <article class="product" tabindex="0">
       <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/6ea172e6-7576-4d74-807e-5cd74bff28d1.image.png?v=1750440676506" alt="XYZ Wrist Tape" />
       <h2><a href="Wristtape.html">XYZ Wrist Tape</a></h2>
       <div class="price">$5.00</div>
-    </div>
+    </article>
 
-    <div class="product">
+    <article class="product" tabindex="0">
       <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/3dd6b329-e1a6-448f-909a-ddb465b16ce6.image.png?v=1750440527246" alt="XYZ Wristbands" />
       <h2><a href="Wristbands.html">XYZ Wristbands</a></h2>
       <div class="price">$5.00</div>
-    </div>
+    </article>
 
-    <div class="product">
+    <article class="product" tabindex="0">
       <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/65b0fa69-6883-4611-a67d-05c033e14b90.image.png?v=1750440440018" alt="XYZ Batting Gloves" />
       <h2><a href="Bsblbattinggloves.html">XYZ Baseball Batting Gloves</a></h2>
       <div class="price">$45.00</div>
-    </div>
+    </article>
   </div>
 
   <hr />
+
   <footer>
     <p>&copy; 2025 XYZ Baseball Co. – All Rights Reserved</p>
   </footer>
+
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const items = document.querySelectorAll("#itemlist li");
+
+    searchInput.addEventListener("input", () => {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      items.forEach(li => {
+        const text = li.textContent.toLowerCase();
+        li.style.display = text.includes(searchTerm) ? "" : "none";
+      });
+    });
+  </script>
 </body>
 </html>
+
