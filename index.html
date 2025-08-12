@@ -20,6 +20,7 @@
       position: relative;
       min-height: 100vh;
       overflow-x: hidden;
+      transition: background-color 0.5s, color 0.5s;
     }
 
     header {
@@ -31,6 +32,7 @@
     header h1 {
       font-size: 3rem;
       color: #ff69b4;
+      transition: color 0.5s;
     }
 
     nav a {
@@ -62,6 +64,7 @@
       text-align: left;
       position: relative;
       z-index: 2;
+      transition: background 0.5s, color 0.5s;
     }
 
     section p {
@@ -89,6 +92,7 @@
       text-align: left;
       position: relative;
       z-index: 2;
+      transition: background 0.5s, color 0.5s;
     }
 
     form input,
@@ -100,6 +104,7 @@
       border: 1px solid #444;
       background: #333;
       color: #fff;
+      transition: background 0.5s, color 0.5s, border-color 0.5s;
     }
 
     form input:focus,
@@ -139,6 +144,7 @@
       margin-bottom: 10px;
       background: #fff;
       color: #000;
+      transition: background 0.5s, color 0.5s, border-color 0.5s;
     }
 
     button {
@@ -149,6 +155,7 @@
       border-radius: 5px;
       cursor: pointer;
       type: button;
+      transition: background-color 0.3s;
     }
 
     button:hover {
@@ -173,8 +180,10 @@
       box-shadow: 0 0 10px #00ffff;
       padding: 20px;
       width: 250px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s, color 0.5s;
       text-align: center;
+      position: relative;
+      user-select: none;
     }
 
     .product:hover {
@@ -186,15 +195,18 @@
       width: 100%;
       border-radius: 10px;
       margin-bottom: 15px;
+      user-select: none;
     }
 
     .product h3 {
       margin-bottom: 10px;
       color: #ff69b4;
+      user-select: text;
     }
 
     .product p {
       margin-bottom: 10px;
+      user-select: text;
     }
 
     /* VIDEO BACKGROUND FIXED */
@@ -225,6 +237,7 @@
       color: #fff;
       padding: 20px;
       z-index: 1000;
+      transition: background 0.5s, color 0.5s;
     }
 
     #cart-modal button#close-cart {
@@ -258,6 +271,176 @@
       font-size: 14px;
       vertical-align: top;
     }
+
+    /* FEATURE 10 - DARK MODE TOGGLE BUTTON */
+    #dark-mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #ff69b4;
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 1002;
+      box-shadow: 0 0 10px #ff1493;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+
+    #dark-mode-toggle:hover {
+      background-color: #ff1493;
+    }
+
+    /* FEATURE 11 - SCROLL TO TOP BUTTON */
+    #scroll-top-btn {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      display: none;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ff1493;
+      z-index: 1002;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+
+    #scroll-top-btn:hover {
+      background-color: #ff1493;
+    }
+
+    /* FEATURE 13 - PRODUCT QUANTITY INCREMENTER */
+    .qty-container {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      user-select: none;
+    }
+
+    .qty-container button {
+      background: #ff69b4;
+      border: none;
+      color: white;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .qty-container button:hover {
+      background: #ff1493;
+    }
+
+    .qty-container span {
+      color: #fff;
+      font-size: 1.1rem;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    /* ADVERTISE BIG BUTTON */
+    .dashboard-section {
+      text-align: center;
+      padding: 40px;
+      background: linear-gradient(135deg, hotpink, lightblue);
+      color: white;
+      border-radius: 15px;
+      box-shadow: 0px 6px 20px rgba(0,0,0,0.25);
+      margin: 40px auto;
+      max-width: 700px;
+      user-select: none;
+    }
+
+    .dashboard-heading {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .dashboard-text {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+    }
+
+    .dashboard-btn {
+      display: inline-block;
+      padding: 20px 50px;
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: white;
+      background-color: black;
+      text-decoration: none;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .dashboard-btn:hover {
+      background-color: white;
+      color: black;
+      transform: scale(1.08);
+    }
+
+    /* Dark mode overrides */
+    body.dark-mode {
+      background-color: #121212;
+      color: #ff69b4;
+    }
+    body.dark-mode header h1 {
+      color: #ff69b4;
+    }
+    body.dark-mode nav a {
+      background-color: #222;
+      color: #ff69b4;
+    }
+    body.dark-mode nav a:hover {
+      background-color: #ff1493;
+      color: white;
+    }
+    body.dark-mode section,
+    body.dark-mode form,
+    body.dark-mode #cart-modal,
+    body.dark-mode .product {
+      background-color: #222;
+      color: #ff69b4;
+      box-shadow: 0 0 15px #ff1493;
+    }
+    body.dark-mode form input,
+    body.dark-mode form textarea,
+    body.dark-mode input[type="email"] {
+      background-color: #333;
+      color: #ff69b4;
+      border-color: #ff1493;
+    }
+    body.dark-mode form button,
+    body.dark-mode button,
+    body.dark-mode #dark-mode-toggle,
+    body.dark-mode #scroll-top-btn,
+    body.dark-mode #cart-btn,
+    body.dark-mode .qty-container button {
+      background-color: #ff1493;
+      color: white;
+    }
+    body.dark-mode form button:hover,
+    body.dark-mode button:hover,
+    body.dark-mode #dark-mode-toggle:hover,
+    body.dark-mode #scroll-top-btn:hover,
+    body.dark-mode #cart-btn:hover,
+    body.dark-mode .qty-container button:hover {
+      background-color: #ff69b4;
+    }
+
   </style>
 </head>
 <body>
@@ -269,57 +452,15 @@
       <a href="Browseourproducts.html">Browse & Buy</a>
     </nav>
   </header>
-<!-- Stylish Big Button -->
-<div class="dashboard-section">
+
+  <!-- Advertise Big Button (feature from before) -->
+  <div class="dashboard-section">
     <h2 class="dashboard-heading">Your Personalized Player Web Page</h2>
     <p class="dashboard-text">Track your progress, view workouts, and stay on top of your goals.</p>
     <a href="https://app--xyz-player-schedule-0253ab71.base44.app/Profile" target="_blank" class="dashboard-btn">
-        Go to Dashboard
+      Go to Dashboard
     </a>
-</div>
-
-<style>
-.dashboard-section {
-    text-align: center;
-    padding: 40px;
-    background: linear-gradient(135deg, hotpink, lightblue);
-    color: white;
-    border-radius: 15px;
-    box-shadow: 0px 6px 20px rgba(0,0,0,0.25);
-    margin: 40px auto;
-    max-width: 700px;
-}
-
-.dashboard-heading {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.dashboard-text {
-    font-size: 1.2rem;
-    margin-bottom: 25px;
-}
-
-.dashboard-btn {
-    display: inline-block;
-    padding: 20px 50px;
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: white;
-    background-color: black;
-    text-decoration: none;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
-}
-
-.dashboard-btn:hover {
-    background-color: white;
-    color: black;
-    transform: scale(1.08);
-}
-</style>
+  </div>
 
   <div class="vip-box">
     <h2>🎉 Become a VIP Member</h2>
@@ -348,6 +489,12 @@
     🛒 <span id="cart-count">0</span>
   </button>
 
+  <!-- FEATURE 10 - DARK MODE TOGGLE BUTTON -->
+  <button id="dark-mode-toggle" title="Toggle Dark Mode">🌙</button>
+
+  <!-- FEATURE 11 - SCROLL TO TOP BUTTON -->
+  <button id="scroll-top-btn" title="Scroll to Top">⬆️</button>
+
   <!-- FEATURED PRODUCTS -->
   <h2 style="margin-top: 60px;">🔥 Featured Gear</h2>
   <div class="featured-products">
@@ -356,6 +503,11 @@
       <h3>Batting Gloves</h3>
       <p>Durable, flexible grip built for the cage and game.</p>
       <p><strong>$25.00</strong></p>
+      <div class="qty-container">
+        <button class="qty-decrease">-</button>
+        <span class="qty-value">1</span>
+        <button class="qty-increase">+</button>
+      </div>
       <button type="button" class="add-to-cart-btn">Add to Cart</button>
     </div>
     <div class="product" data-name="Wrist Tape" data-price="10.00">
@@ -363,6 +515,11 @@
       <h3>Wrist Tape</h3>
       <p>Blackout, hot pink, and custom rolls available.</p>
       <p><strong>$10.00</strong></p>
+      <div class="qty-container">
+        <button class="qty-decrease">-</button>
+        <span class="qty-value">1</span>
+        <button class="qty-increase">+</button>
+      </div>
       <button type="button" class="add-to-cart-btn">Add to Cart</button>
     </div>
     <div class="product" data-name="XYZ T-Shirt" data-price="20.00">
@@ -370,6 +527,11 @@
       <h3>XYZ T-Shirt</h3>
       <p>Rep the brand in soft, bold, breathable cotton.</p>
       <p><strong>$20.00</strong></p>
+      <div class="qty-container">
+        <button class="qty-decrease">-</button>
+        <span class="qty-value">1</span>
+        <button class="qty-increase">+</button>
+      </div>
       <button type="button" class="add-to-cart-btn">Add to Cart</button>
     </div>
   </div>
@@ -467,27 +629,44 @@
       cartTotalEl.textContent = total.toFixed(2);
     }
 
-    // Add to cart function
-    function addToCart(name, price) {
+    // Add to cart function with qty
+    function addToCart(name, price, qty = 1) {
       const existing = cart.find(item => item.name === name);
       if(existing) {
-        existing.qty++;
+        existing.qty += qty;
       } else {
-        cart.push({ name, price: parseFloat(price), qty: 1 });
+        cart.push({ name, price: parseFloat(price), qty });
       }
       localStorage.setItem('xyzCart', JSON.stringify(cart));
       updateCartCount();
       renderCart();
     }
 
-    // Event: Add to Cart buttons
+    // Event: Add to Cart buttons with qty support
     document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const product = e.target.closest('.product');
         const name = product.getAttribute('data-name');
         const price = product.getAttribute('data-price');
-        addToCart(name, price);
-        alert(`${name} added to cart!`);
+        const qty = parseInt(product.querySelector('.qty-value').textContent) || 1;
+        addToCart(name, price, qty);
+        alert(`${qty} x ${name} added to cart!`);
+      });
+    });
+
+    // Quantity increase/decrease buttons
+    document.querySelectorAll('.product').forEach(product => {
+      const decreaseBtn = product.querySelector('.qty-decrease');
+      const increaseBtn = product.querySelector('.qty-increase');
+      const qtyValue = product.querySelector('.qty-value');
+
+      decreaseBtn.addEventListener('click', () => {
+        let current = parseInt(qtyValue.textContent);
+        if(current > 1) qtyValue.textContent = current - 1;
+      });
+      increaseBtn.addEventListener('click', () => {
+        let current = parseInt(qtyValue.textContent);
+        qtyValue.textContent = current + 1;
       });
     });
 
@@ -526,9 +705,42 @@
 
     // Initial load
     updateCartCount();
+
+    // FEATURE 10 - DARK MODE TOGGLE
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      if(document.body.classList.contains('dark-mode')) {
+        darkModeToggle.textContent = '☀️';
+        localStorage.setItem('darkMode', 'enabled');
+      } else {
+        darkModeToggle.textContent = '🌙';
+        localStorage.setItem('darkMode', 'disabled');
+      }
+    });
+
+    // Load dark mode state from localStorage
+    if(localStorage.getItem('darkMode') === 'enabled') {
+      document.body.classList.add('dark-mode');
+      darkModeToggle.textContent = '☀️';
+    }
+
+    // FEATURE 11 - SCROLL TO TOP BUTTON
+    const scrollTopBtn = document.getElementById('scroll-top-btn');
+
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 200) {
+        scrollTopBtn.style.display = 'block';
+      } else {
+        scrollTopBtn.style.display = 'none';
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
   </script>
 
 </body>
 </html>
-
-
