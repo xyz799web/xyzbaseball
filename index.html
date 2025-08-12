@@ -53,6 +53,26 @@
       background-color: #ff69b4;
     }
 
+    /* Social Buttons */
+    .social-buttons {
+      margin: 10px 0 30px 0;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .social-buttons a {
+      display: inline-block;
+      margin: 0 10px;
+      transition: transform 0.3s ease;
+    }
+    .social-buttons a:hover {
+      transform: scale(1.2);
+    }
+    .social-buttons img {
+      width: 30px;
+      height: 30px;
+    }
+
     section {
       background: #000;
       color: #fff;
@@ -81,29 +101,34 @@
       z-index: 2;
     }
 
+    /* Review form smaller & tighter */
     form {
       background: #000;
       color: #fff;
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 30px;
+      max-width: 500px;
+      margin: 20px auto 40px auto;
+      padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 15px #00ffff;
       text-align: left;
       position: relative;
       z-index: 2;
       transition: background 0.5s, color 0.5s;
+      font-size: 0.9rem;
+      transform-origin: center;
+      transform: scale(0.9);
     }
 
     form input,
     form textarea {
       width: 100%;
-      padding: 10px;
-      margin: 10px 0;
+      padding: 8px;
+      margin: 8px 0;
       border-radius: 5px;
       border: 1px solid #444;
       background: #333;
       color: #fff;
+      font-size: 0.9rem;
       transition: background 0.5s, color 0.5s, border-color 0.5s;
     }
 
@@ -114,52 +139,18 @@
     }
 
     form button {
-      padding: 10px 20px;
+      padding: 8px 16px;
       background-color: #ff69b4;
       border: none;
       color: white;
       cursor: pointer;
       border-radius: 5px;
+      font-size: 1rem;
       transition: background-color 0.3s;
-      type: submit;
     }
 
     form button:hover {
       background-color: #ff1493;
-    }
-
-    .vip-box {
-      margin: 30px auto;
-      max-width: 500px;
-      position: relative;
-      z-index: 2;
-    }
-
-    input[type="email"] {
-      padding: 10px;
-      width: 80%;
-      max-width: 300px;
-      border-radius: 5px;
-      border: 1px solid #000;
-      margin-bottom: 10px;
-      background: #fff;
-      color: #000;
-      transition: background 0.5s, color 0.5s, border-color 0.5s;
-    }
-
-    button {
-      padding: 10px 20px;
-      background: #ff69b4;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      type: button;
-      transition: background-color 0.3s;
-    }
-
-    button:hover {
-      background: #ff1493;
     }
 
     /* FEATURED PRODUCT CARDS */
@@ -453,21 +444,26 @@
     </nav>
   </header>
 
+  <!-- Social buttons added below header -->
+  <div class="social-buttons">
+    <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
+    </a>
+    <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" />
+    </a>
+    <a href="https://youtube.com/yourusername" target="_blank" rel="noopener noreferrer">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
+    </a>
+  </div>
+
   <!-- Advertise Big Button (feature from before) -->
   <div class="dashboard-section">
     <h2 class="dashboard-heading">Unlock your full potential</h2>
     <p class="dashboard-text">Track your progress, view workouts, and stay on top of your goals.</p>
     <a href="https://app--xyz-player-schedule-0253ab71.base44.app/Profile" target="_blank" class="dashboard-btn">
-      To level up your game as a student-athlete 
-    -
-      Click here!
+      To level up your game as a student-athlete - Click here!
     </a>
-  </div>
-
-  <div class="vip-box">
-    <h2>🎉 Become a VIP Member</h2>
-    <input id="email" type="email" placeholder="Enter your email" />
-    <button id="buy-btn" type="button">Buy Membership for $20</button>
   </div>
 
   <!-- Video Background -->
@@ -540,209 +536,137 @@
 
   <section>
     <p>
-      XYZ is a small but fiercely passionate company founded by two lifelong friends with one goal — to bring bold, high-energy baseball and sports apparel to players and fans who live for the game. Whether you’re stepping up to the plate, cheering from the stands, or just repping the sport you love, XYZ’s gear is designed to help you wear your heart—and your game—on your sleeve.
+      XYZ is a small but fiercely passionate company founded by two lifelong friends with one goal — to bring bold, high-energy baseball and sports apparel to players and fans who live for the game. Whether you’re stepping up to the plate, cheering from the stands, or just repping the sport you love, XYZ’s gear is designed to help you wear your heart on your sleeve (and your cleats).
     </p>
   </section>
 
-  <section style="text-align:center;">
-    <iframe src="https://www.youtube.com/embed/ni82aJnLbEE" allowfullscreen></iframe>
-    <br />
-    <a href="https://www.youtube.com/shorts/ni82aJnLbEE?feature=share" target="_blank">Check out our YouTube Channel!</a>
+  <section>
+    <h2>See What Other Players Are Saying</h2>
+    <form id="review-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Your name" required />
+
+      <label for="review">Review:</label>
+      <textarea id="review" name="review" rows="4" placeholder="Write your review here..." required></textarea>
+
+      <button type="submit">Submit Review</button>
+    </form>
   </section>
 
-  <form action="https://formsubmit.co/xyzbaseballgear@gmail.com" method="POST">
-    <input type="hidden" name="_next" value="https://wassup-t-money.glitch.me/thankyou.html" />
-    <input type="hidden" name="_captcha" value="false" />
-    <input type="text" name="name" placeholder="Your Name (optional)" />
-    <input type="text" name="product" placeholder="What do you want added?" required />
-    <input type="number" name="rating" placeholder="Rating from 1–5" min="1" max="5" required />
-    <textarea name="review" placeholder="Write your review here..." rows="4" required></textarea>
-    <button type="submit">Submit Review</button>
-  </form>
-
-  <div class="vip-box">
-    <h3>🎁 Access VIP Content</h3>
-    <input id="vip-email" type="email" placeholder="Enter your email" />
-    <button id="vip-btn" type="button">Go to VIP Content</button>
-  </div>
-
   <script>
-    // Stripe Membership Checkout
-    document.getElementById('buy-btn').onclick = async () => {
-      const email = document.getElementById('email').value;
-      if (!email) return alert('Please enter your email');
+    // Review form submit - Just alert for demo purposes
+    document.getElementById('review-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thanks for your review!');
+      this.reset();
+    });
 
-      const response = await fetch('http://localhost:3000/create-checkout-session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-
-      const data = await response.json();
-      if (data.url) {
-        window.location = data.url;
-      } else {
-        alert('Something went wrong');
-      }
-    };
-
-    // VIP Content Access
-    document.getElementById('vip-btn').onclick = () => {
-      const email = document.getElementById('vip-email').value;
-      if (!email) return alert('Please enter your email');
-      window.location = `/vip-content?email=${encodeURIComponent(email)}`;
-    };
-  </script>
-
-  <script>
-    // Initialize cart from localStorage or empty
-    let cart = JSON.parse(localStorage.getItem('xyzCart')) || [];
-
+    // Cart functionality
+    let cart = {};
     const cartBtn = document.getElementById('cart-btn');
     const cartModal = document.getElementById('cart-modal');
-    const cartItemsEl = document.getElementById('cart-items');
-    const cartCountEl = document.getElementById('cart-count');
-    const cartTotalEl = document.getElementById('cart-total');
+    const closeCartBtn = document.getElementById('close-cart');
+    const cartItemsList = document.getElementById('cart-items');
+    const cartCount = document.getElementById('cart-count');
+    const cartTotal = document.getElementById('cart-total');
     const checkoutBtn = document.getElementById('checkout-btn');
     const clearCartBtn = document.getElementById('clear-cart');
-    const closeCartBtn = document.getElementById('close-cart');
 
-    // Update cart UI count
-    function updateCartCount() {
-      cartCountEl.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
-    }
-
-    // Render cart items list
-    function renderCart() {
-      if(cart.length === 0) {
-        cartItemsEl.innerHTML = '<li>Your cart is empty.</li>';
-        cartTotalEl.textContent = '0.00';
-        return;
-      }
-      cartItemsEl.innerHTML = '';
+    function updateCartDisplay() {
+      cartItemsList.innerHTML = '';
       let total = 0;
-      cart.forEach(item => {
+      let itemCount = 0;
+      for (const name in cart) {
+        const item = cart[name];
         const li = document.createElement('li');
-        li.style.marginBottom = '10px';
         li.textContent = `${item.name} x${item.qty} - $${(item.price * item.qty).toFixed(2)}`;
-        cartItemsEl.appendChild(li);
+        cartItemsList.appendChild(li);
         total += item.price * item.qty;
-      });
-      cartTotalEl.textContent = total.toFixed(2);
-    }
-
-    // Add to cart function with qty
-    function addToCart(name, price, qty = 1) {
-      const existing = cart.find(item => item.name === name);
-      if(existing) {
-        existing.qty += qty;
-      } else {
-        cart.push({ name, price: parseFloat(price), qty });
+        itemCount += item.qty;
       }
-      localStorage.setItem('xyzCart', JSON.stringify(cart));
-      updateCartCount();
-      renderCart();
+      cartTotal.textContent = total.toFixed(2);
+      cartCount.textContent = itemCount;
+      if (itemCount === 0) {
+        cartModal.style.display = 'none';
+      }
     }
 
-    // Event: Add to Cart buttons with qty support
     document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const product = e.target.closest('.product');
-        const name = product.getAttribute('data-name');
-        const price = product.getAttribute('data-price');
-        const qty = parseInt(product.querySelector('.qty-value').textContent) || 1;
-        addToCart(name, price, qty);
-        alert(`${qty} x ${name} added to cart!`);
+      btn.addEventListener('click', () => {
+        const productEl = btn.closest('.product');
+        const name = productEl.dataset.name;
+        const price = parseFloat(productEl.dataset.price);
+        const qtyEl = productEl.querySelector('.qty-value');
+        let qty = parseInt(qtyEl.textContent);
+
+        if (cart[name]) {
+          cart[name].qty += qty;
+        } else {
+          cart[name] = { name, price, qty };
+        }
+
+        updateCartDisplay();
       });
     });
 
-    // Quantity increase/decrease buttons
-    document.querySelectorAll('.product').forEach(product => {
-      const decreaseBtn = product.querySelector('.qty-decrease');
-      const increaseBtn = product.querySelector('.qty-increase');
-      const qtyValue = product.querySelector('.qty-value');
-
-      decreaseBtn.addEventListener('click', () => {
-        let current = parseInt(qtyValue.textContent);
-        if(current > 1) qtyValue.textContent = current - 1;
-      });
-      increaseBtn.addEventListener('click', () => {
-        let current = parseInt(qtyValue.textContent);
-        qtyValue.textContent = current + 1;
+    document.querySelectorAll('.qty-increase').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const qtyEl = btn.previousElementSibling;
+        let qty = parseInt(qtyEl.textContent);
+        qtyEl.textContent = qty + 1;
       });
     });
 
-    // Toggle cart modal visibility
+    document.querySelectorAll('.qty-decrease').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const qtyEl = btn.nextElementSibling;
+        let qty = parseInt(qtyEl.textContent);
+        if (qty > 1) {
+          qtyEl.textContent = qty - 1;
+        }
+      });
+    });
+
     cartBtn.addEventListener('click', () => {
-      if(cartModal.style.display === 'block') {
+      if (cartModal.style.display === 'block') {
         cartModal.style.display = 'none';
       } else {
-        renderCart();
         cartModal.style.display = 'block';
       }
     });
 
-    // Close cart modal button
     closeCartBtn.addEventListener('click', () => {
       cartModal.style.display = 'none';
     });
 
-    // Clear cart event
     clearCartBtn.addEventListener('click', () => {
-      cart = [];
-      localStorage.removeItem('xyzCart');
-      updateCartCount();
-      renderCart();
+      cart = {};
+      updateCartDisplay();
     });
 
-    // Checkout button — redirects to your checkout page
     checkoutBtn.addEventListener('click', () => {
-      if(cart.length === 0) {
-        alert('Your cart is empty!');
-        return;
-      }
-      alert('Redirecting to checkout...');
-      window.location.href = 'Checkout.html'; // Adjust URL if different
+      alert('Checkout not implemented in this demo.');
     });
 
-    // Initial load
-    updateCartCount();
-
-    // FEATURE 10 - DARK MODE TOGGLE
+    // Dark mode toggle
     const darkModeToggle = document.getElementById('dark-mode-toggle');
     darkModeToggle.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
-      if(document.body.classList.contains('dark-mode')) {
-        darkModeToggle.textContent = '☀️';
-        localStorage.setItem('darkMode', 'enabled');
-      } else {
-        darkModeToggle.textContent = '🌙';
-        localStorage.setItem('darkMode', 'disabled');
-      }
     });
 
-    // Load dark mode state from localStorage
-    if(localStorage.getItem('darkMode') === 'enabled') {
-      document.body.classList.add('dark-mode');
-      darkModeToggle.textContent = '☀️';
-    }
-
-    // FEATURE 11 - SCROLL TO TOP BUTTON
+    // Scroll to top button
     const scrollTopBtn = document.getElementById('scroll-top-btn');
-
     window.addEventListener('scroll', () => {
-      if(window.scrollY > 200) {
+      if (window.scrollY > 300) {
         scrollTopBtn.style.display = 'block';
       } else {
         scrollTopBtn.style.display = 'none';
       }
     });
-
     scrollTopBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
   </script>
-
 </body>
 </html>
+
