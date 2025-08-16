@@ -444,19 +444,6 @@
     </nav>
   </header>
 
-  <!-- Social buttons added below header -->
-  <div class="social-buttons">
-    <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
-    </a>
-    <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" />
-    </a>
-    <a href="https://youtube.com/yourusername" target="_blank" rel="noopener noreferrer">
-      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
-    </a>
-  </div>
-
   <!-- Advertise Big Button (feature from before) -->
   <div class="dashboard-section">
     <h2 class="dashboard-heading">Unlock your full potential</h2>
@@ -539,28 +526,62 @@
       XYZ is a small but fiercely passionate company founded by two lifelong friends with one goal — to bring bold, high-energy baseball and sports apparel to players and fans who live for the game. Whether you’re stepping up to the plate, cheering from the stands, or just repping the sport you love, XYZ’s gear is designed to help you wear your heart on your sleeve (and your cleats).
     </p>
   </section>
+<section>
+<!-- Social buttons added below header -->
+  <div class="social-buttons">
+    <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
+    </a>
+    <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" />
+    </a>
+    <a href="https://youtube.com/yourusername" target="_blank" rel="noopener noreferrer">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
+    </a>
+  </div>
+</section>
+  /* Basic styles for demo purposes */
+    .dark-mode { background-color: #121212; color: white; }
+    #cart-modal { display: none; position: fixed; top: 50px; right: 50px; background: #fff; padding: 20px; border: 1px solid #ccc; z-index: 1000; }
+    #scroll-top-btn { display: none; position: fixed; bottom: 20px; right: 20px; padding: 10px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  
+  <!-- Example Products -->
+  <div class="product" data-name="Baseball Bat" data-price="50.00">
+    <h3>Baseball Bat</h3>
+    <button class="qty-decrease">-</button>
+    <span class="qty-value">1</span>
+    <button class="qty-increase">+</button>
+    <button class="add-to-cart-btn">Add to Cart</button>
+  </div>
 
-  <section>
-    <h2>See What Other Players Are Saying</h2>
-    <form id="review-form">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" placeholder="Your name" required />
+  <div class="product" data-name="Gloves" data-price="25.00">
+    <h3>Gloves</h3>
+    <button class="qty-decrease">-</button>
+    <span class="qty-value">1</span>
+    <button class="qty-increase">+</button>
+    <button class="add-to-cart-btn">Add to Cart</button>
+  </div>
 
-      <label for="review">Review:</label>
-      <textarea id="review" name="review" rows="4" placeholder="Write your review here..." required></textarea>
+  <!-- Cart -->
+  <button id="cart-btn">Cart (<span id="cart-count">0</span>)</button>
+  <div id="cart-modal">
+    <button id="close-cart">Close</button>
+    <ul id="cart-items"></ul>
+    <p>Total: $<span id="cart-total">0.00</span></p>
+    <button id="checkout-btn">Checkout</button>
+    <button id="clear-cart">Clear Cart</button>
+  </div>
 
-      <button type="submit">Submit Review</button>
-    </form>
-  </section>
+  <!-- Dark Mode -->
+  <button id="dark-mode-toggle">Toggle Dark Mode</button>
+
+  <!-- Scroll to Top -->
+  <button id="scroll-top-btn">Top</button>
 
   <script>
-    // Review form submit - Just alert for demo purposes
-    document.getElementById('review-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Thanks for your review!');
-      this.reset();
-    });
-
     // Cart functionality
     let cart = {};
     const cartBtn = document.getElementById('cart-btn');
@@ -576,6 +597,7 @@
       cartItemsList.innerHTML = '';
       let total = 0;
       let itemCount = 0;
+
       for (const name in cart) {
         const item = cart[name];
         const li = document.createElement('li');
@@ -584,8 +606,10 @@
         total += item.price * item.qty;
         itemCount += item.qty;
       }
+
       cartTotal.textContent = total.toFixed(2);
       cartCount.textContent = itemCount;
+
       if (itemCount === 0) {
         cartModal.style.display = 'none';
       }
@@ -597,7 +621,7 @@
         const name = productEl.dataset.name;
         const price = parseFloat(productEl.dataset.price);
         const qtyEl = productEl.querySelector('.qty-value');
-        let qty = parseInt(qtyEl.textContent);
+        const qty = parseInt(qtyEl.textContent);
 
         if (cart[name]) {
           cart[name].qty += qty;
@@ -612,61 +636,36 @@
     document.querySelectorAll('.qty-increase').forEach(btn => {
       btn.addEventListener('click', () => {
         const qtyEl = btn.previousElementSibling;
-        let qty = parseInt(qtyEl.textContent);
-        qtyEl.textContent = qty + 1;
+        qtyEl.textContent = parseInt(qtyEl.textContent) + 1;
       });
     });
 
     document.querySelectorAll('.qty-decrease').forEach(btn => {
       btn.addEventListener('click', () => {
         const qtyEl = btn.nextElementSibling;
-        let qty = parseInt(qtyEl.textContent);
-        if (qty > 1) {
-          qtyEl.textContent = qty - 1;
-        }
+        const qty = parseInt(qtyEl.textContent);
+        if (qty > 1) qtyEl.textContent = qty - 1;
       });
     });
 
     cartBtn.addEventListener('click', () => {
-      if (cartModal.style.display === 'block') {
-        cartModal.style.display = 'none';
-      } else {
-        cartModal.style.display = 'block';
-      }
+      cartModal.style.display = cartModal.style.display === 'block' ? 'none' : 'block';
     });
 
-    closeCartBtn.addEventListener('click', () => {
-      cartModal.style.display = 'none';
-    });
-
-    clearCartBtn.addEventListener('click', () => {
-      cart = {};
-      updateCartDisplay();
-    });
-
-    checkoutBtn.addEventListener('click', () => {
-      alert('Checkout not implemented in this demo.');
-    });
+    closeCartBtn.addEventListener('click', () => cartModal.style.display = 'none');
+    clearCartBtn.addEventListener('click', () => { cart = {}; updateCartDisplay(); });
+    checkoutBtn.addEventListener('click', () => alert('Checkout not implemented in this demo.'));
 
     // Dark mode toggle
     const darkModeToggle = document.getElementById('dark-mode-toggle');
-    darkModeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-    });
+    darkModeToggle.addEventListener('click', () => document.body.classList.toggle('dark-mode'));
 
     // Scroll to top button
     const scrollTopBtn = document.getElementById('scroll-top-btn');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        scrollTopBtn.style.display = 'block';
-      } else {
-        scrollTopBtn.style.display = 'none';
-      }
-    });
-    scrollTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    window.addEventListener('scroll', () => scrollTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none');
+    scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
 </body>
 </html>
 
+   
