@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Giveaway + Shop – XYZ Baseball</title>
+<title>Shop – XYZ Baseball</title>
 <style>
   /* Reset */
   *, *::before, *::after {
@@ -138,19 +138,27 @@
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-    max-width: 960px;
-    margin: 0 auto 40px;
+    margin: 20px auto 40px;
+    width: 90%;
+    max-width: 400px;
+  }
   }
 
   .product {
-    background: white;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    max-width: 300px;
-    flex: 1 1 calc(45% - 20px);
-    text-align: left;
-    transition: box-shadow 0.3s ease;
+    background: linear-gradient(90deg, #ff1493, #00bfff);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    width: 100%;
+    transition: background 0.3s ease, color 0.3s ease;
+     background: linear-gradient(90deg, #00bfff, #ff1493);
+    color: black;
+    outline: none;
+  }
+
   }
 
   .product:hover, .product:focus-within {
@@ -206,28 +214,6 @@
 </style>
 </head>
 <body>
-
-  <h3>
-    Want to win a free prize? Just enter your info and we'll enter you in the giveaway!
-  </h3>
-
-  <form action="https://formsubmit.co/xyzbaseballgear@gmail.com" method="POST" novalidate>
-    <input type="hidden" name="_next" value="https://wassup-t-money.glitch.me/thankyou.html" />
-    <input type="hidden" name="_captcha" value="false" />
-
-    <label for="fname">First Name:</label>
-    <input type="text" id="fname" name="fname" required aria-required="true" />
-
-    <label for="lname">Last Name:</label>
-    <input type="text" id="lname" name="lname" required aria-required="true" />
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required aria-required="true" />
-
-    <button type="submit">Enter Giveaway</button>
-  </form>
-
-  <hr />
 
   <h1>🛍️ Our Products</h1>
 
