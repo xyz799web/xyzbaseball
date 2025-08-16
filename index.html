@@ -5,16 +5,11 @@
   <title>XYZ | Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: "Courier New", monospace;
-      background-color: #add8e6; /* Light blue */
-      color: #ff69b4; /* Hot pink */
+      background-color: #add8e6;
+      color: #ff69b4;
       padding: 20px;
       text-align: center;
       position: relative;
@@ -22,19 +17,8 @@
       overflow-x: hidden;
       transition: background-color 0.5s, color 0.5s;
     }
-
-    header {
-      margin-bottom: 40px;
-      position: relative;
-      z-index: 2;
-    }
-
-    header h1 {
-      font-size: 3rem;
-      color: #ff69b4;
-      transition: color 0.5s;
-    }
-
+    header { margin-bottom: 40px; position: relative; z-index: 2; }
+    header h1 { font-size: 3rem; color: #ff69b4; transition: color 0.5s; }
     nav a {
       display: inline-block;
       background-color: #000;
@@ -48,30 +32,13 @@
       position: relative;
       z-index: 2;
     }
-
-    nav a:hover {
-      background-color: #ff69b4;
-    }
+    nav a:hover { background-color: #ff69b4; }
 
     /* Social Buttons */
-    .social-buttons {
-      margin: 10px 0 30px 0;
-      text-align: center;
-      position: relative;
-      z-index: 2;
-    }
-    .social-buttons a {
-      display: inline-block;
-      margin: 0 10px;
-      transition: transform 0.3s ease;
-    }
-    .social-buttons a:hover {
-      transform: scale(1.2);
-    }
-    .social-buttons img {
-      width: 30px;
-      height: 30px;
-    }
+    .social-buttons { margin: 10px 0 30px 0; text-align: center; position: relative; z-index: 2; }
+    .social-buttons a { display: inline-block; margin: 0 10px; transition: transform 0.3s ease; }
+    .social-buttons a:hover { transform: scale(1.2); }
+    .social-buttons img { width: 30px; height: 30px; }
 
     section {
       background: #000;
@@ -86,10 +53,7 @@
       z-index: 2;
       transition: background 0.5s, color 0.5s;
     }
-
-    section p {
-      line-height: 1.6;
-    }
+    section p { line-height: 1.6; }
 
     iframe {
       width: 100%;
@@ -101,7 +65,7 @@
       z-index: 2;
     }
 
-    /* Review form smaller & tighter */
+    /* Review Form */
     form {
       background: #000;
       color: #fff;
@@ -118,9 +82,7 @@
       transform-origin: center;
       transform: scale(0.9);
     }
-
-    form input,
-    form textarea {
+    form input, form textarea {
       width: 100%;
       padding: 8px;
       margin: 8px 0;
@@ -131,13 +93,7 @@
       font-size: 0.9rem;
       transition: background 0.5s, color 0.5s, border-color 0.5s;
     }
-
-    form input:focus,
-    form textarea:focus {
-      border-color: #ff69b4;
-      outline: none;
-    }
-
+    form input:focus, form textarea:focus { border-color: #ff69b4; outline: none; }
     form button {
       padding: 8px 16px;
       background-color: #ff69b4;
@@ -148,12 +104,9 @@
       font-size: 1rem;
       transition: background-color 0.3s;
     }
+    form button:hover { background-color: #ff1493; }
 
-    form button:hover {
-      background-color: #ff1493;
-    }
-
-    /* FEATURED PRODUCT CARDS */
+    /* Featured Product Cards */
     .featured-products {
       display: flex;
       flex-wrap: wrap;
@@ -163,7 +116,6 @@
       position: relative;
       z-index: 2;
     }
-
     .product {
       background: #000;
       color: #fff;
@@ -176,44 +128,18 @@
       position: relative;
       user-select: none;
     }
-
     .product:hover {
       transform: scale(1.05);
       box-shadow: 0 0 15px #ff69b4;
     }
+    .product img { width: 100%; border-radius: 10px; margin-bottom: 15px; user-select: none; }
+    .product h3 { margin-bottom: 10px; color: #ff69b4; user-select: text; }
+    .product p { margin-bottom: 10px; user-select: text; }
 
-    .product img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      user-select: none;
-    }
+    /* Video Background */
+    #video-bg { position: fixed; top: 0; left: 0; object-fit: cover; width: 100vw; height: 100vh; z-index: -1; opacity: 0.15; pointer-events: none; }
 
-    .product h3 {
-      margin-bottom: 10px;
-      color: #ff69b4;
-      user-select: text;
-    }
-
-    .product p {
-      margin-bottom: 10px;
-      user-select: text;
-    }
-
-    /* VIDEO BACKGROUND FIXED */
-    #video-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      object-fit: cover;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-      opacity: 0.15;
-      pointer-events: none;
-    }
-
-    /* CART MODAL */
+    /* Cart Modal */
     #cart-modal {
       display: none;
       position: fixed;
@@ -230,17 +156,9 @@
       z-index: 1000;
       transition: background 0.5s, color 0.5s;
     }
+    #cart-modal button#close-cart { float: right; background: none; border: none; color: #ff69b4; font-size: 18px; cursor: pointer; }
 
-    #cart-modal button#close-cart {
-      float: right;
-      background: none;
-      border: none;
-      color: #ff69b4;
-      font-size: 18px;
-      cursor: pointer;
-    }
-
-    /* CART ICON BUTTON */
+    /* Cart Icon */
     #cart-btn {
       position: fixed;
       bottom: 20px;
@@ -257,13 +175,9 @@
       box-shadow: 0 0 10px #ff1493;
       z-index: 1001;
     }
+    #cart-count { font-size: 14px; vertical-align: top; }
 
-    #cart-count {
-      font-size: 14px;
-      vertical-align: top;
-    }
-
-    /* FEATURE 10 - DARK MODE TOGGLE BUTTON */
+    /* Dark Mode Toggle */
     #dark-mode-toggle {
       position: fixed;
       top: 20px;
@@ -280,12 +194,9 @@
       transition: background-color 0.3s ease;
       user-select: none;
     }
+    #dark-mode-toggle:hover { background-color: #ff1493; }
 
-    #dark-mode-toggle:hover {
-      background-color: #ff1493;
-    }
-
-    /* FEATURE 11 - SCROLL TO TOP BUTTON */
+    /* Scroll to Top */
     #scroll-top-btn {
       position: fixed;
       bottom: 80px;
@@ -303,44 +214,15 @@
       user-select: none;
       transition: background-color 0.3s ease;
     }
+    #scroll-top-btn:hover { background-color: #ff1493; }
 
-    #scroll-top-btn:hover {
-      background-color: #ff1493;
-    }
+    /* Quantity */
+    .qty-container { margin-top: 10px; display: flex; justify-content: center; align-items: center; gap: 10px; user-select: none; }
+    .qty-container button { background: #ff69b4; border: none; color: white; font-weight: bold; padding: 5px 10px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; }
+    .qty-container button:hover { background: #ff1493; }
+    .qty-container span { color: #fff; font-size: 1.1rem; min-width: 20px; text-align: center; }
 
-    /* FEATURE 13 - PRODUCT QUANTITY INCREMENTER */
-    .qty-container {
-      margin-top: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      user-select: none;
-    }
-
-    .qty-container button {
-      background: #ff69b4;
-      border: none;
-      color: white;
-      font-weight: bold;
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .qty-container button:hover {
-      background: #ff1493;
-    }
-
-    .qty-container span {
-      color: #fff;
-      font-size: 1.1rem;
-      min-width: 20px;
-      text-align: center;
-    }
-
-    /* ADVERTISE BIG BUTTON */
+    /* Advertise Big Button */
     .dashboard-section {
       text-align: center;
       padding: 40px;
@@ -352,18 +234,8 @@
       max-width: 700px;
       user-select: none;
     }
-
-    .dashboard-heading {
-      font-size: 2rem;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .dashboard-text {
-      font-size: 1.2rem;
-      margin-bottom: 25px;
-    }
-
+    .dashboard-heading { font-size: 2rem; font-weight: bold; margin-bottom: 10px; }
+    .dashboard-text { font-size: 1.2rem; margin-bottom: 25px; }
     .dashboard-btn {
       display: inline-block;
       padding: 20px 50px;
@@ -376,62 +248,17 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
       transition: all 0.3s ease;
     }
-
-    .dashboard-btn:hover {
-      background-color: white;
-      color: black;
-      transform: scale(1.08);
-    }
+    .dashboard-btn:hover { background-color: white; color: black; transform: scale(1.08); }
 
     /* Dark mode overrides */
-    body.dark-mode {
-      background-color: #121212;
-      color: #ff69b4;
-    }
-    body.dark-mode header h1 {
-      color: #ff69b4;
-    }
-    body.dark-mode nav a {
-      background-color: #222;
-      color: #ff69b4;
-    }
-    body.dark-mode nav a:hover {
-      background-color: #ff1493;
-      color: white;
-    }
-    body.dark-mode section,
-    body.dark-mode form,
-    body.dark-mode #cart-modal,
-    body.dark-mode .product {
-      background-color: #222;
-      color: #ff69b4;
-      box-shadow: 0 0 15px #ff1493;
-    }
-    body.dark-mode form input,
-    body.dark-mode form textarea,
-    body.dark-mode input[type="email"] {
-      background-color: #333;
-      color: #ff69b4;
-      border-color: #ff1493;
-    }
-    body.dark-mode form button,
-    body.dark-mode button,
-    body.dark-mode #dark-mode-toggle,
-    body.dark-mode #scroll-top-btn,
-    body.dark-mode #cart-btn,
-    body.dark-mode .qty-container button {
-      background-color: #ff1493;
-      color: white;
-    }
-    body.dark-mode form button:hover,
-    body.dark-mode button:hover,
-    body.dark-mode #dark-mode-toggle:hover,
-    body.dark-mode #scroll-top-btn:hover,
-    body.dark-mode #cart-btn:hover,
-    body.dark-mode .qty-container button:hover {
-      background-color: #ff69b4;
-    }
-
+    body.dark-mode { background-color: #121212; color: #ff69b4; }
+    body.dark-mode header h1 { color: #ff69b4; }
+    body.dark-mode nav a { background-color: #222; color: #ff69b4; }
+    body.dark-mode nav a:hover { background-color: #ff1493; color: white; }
+    body.dark-mode section, body.dark-mode form, body.dark-mode #cart-modal, body.dark-mode .product { background-color: #222; color: #ff69b4; box-shadow: 0 0 15px #ff1493; }
+    body.dark-mode form input, body.dark-mode form textarea, body.dark-mode input[type="email"] { background-color: #333; color: #ff69b4; border-color: #ff1493; }
+    body.dark-mode form button, body.dark-mode button, body.dark-mode #dark-mode-toggle, body.dark-mode #scroll-top-btn, body.dark-mode #cart-btn, body.dark-mode .qty-container button { background-color: #ff1493; color: white; }
+    body.dark-mode form button:hover, body.dark-mode button:hover, body.dark-mode #dark-mode-toggle:hover, body.dark-mode #scroll-top-btn:hover, body.dark-mode #cart-btn:hover, body.dark-mode .qty-container button:hover { background-color: #ff69b4; }
   </style>
 </head>
 <body>
@@ -444,7 +271,7 @@
     </nav>
   </header>
 
-  <!-- Advertise Big Button (feature from before) -->
+  <!-- Advertise Section -->
   <div class="dashboard-section">
     <h2 class="dashboard-heading">Unlock your full potential</h2>
     <p class="dashboard-text">Track your progress, view workouts, and stay on top of your goals.</p>
@@ -459,28 +286,7 @@
     Your browser does not support the video tag.
   </video>
 
-  <!-- CART MODAL -->
-  <div id="cart-modal">
-    <button id="close-cart" type="button" title="Close cart">✖</button>
-    <h3>Your Cart</h3>
-    <ul id="cart-items" style="list-style:none; padding: 0; margin-bottom: 15px;"></ul>
-    <p><strong>Total: $<span id="cart-total">0.00</span></strong></p>
-    <button id="checkout-btn" type="button" style="width: 100%; margin-bottom: 10px;">Checkout</button>
-    <button id="clear-cart" type="button" style="width: 100%;">Clear Cart</button>
-  </div>
-
-  <!-- CART ICON BUTTON -->
-  <button id="cart-btn" title="View Cart" type="button">
-    🛒 <span id="cart-count">0</span>
-  </button>
-
-  <!-- FEATURE 10 - DARK MODE TOGGLE BUTTON -->
-  <button id="dark-mode-toggle" title="Toggle Dark Mode">🌙</button>
-
-  <!-- FEATURE 11 - SCROLL TO TOP BUTTON -->
-  <button id="scroll-top-btn" title="Scroll to Top">⬆️</button>
-
-  <!-- FEATURED PRODUCTS -->
+  <!-- Featured Products -->
   <h2 style="margin-top: 60px;">🔥 Featured Gear</h2>
   <div class="featured-products">
     <div class="product" data-name="Batting Gloves" data-price="25.00">
@@ -521,151 +327,123 @@
     </div>
   </div>
 
+  <!-- About Section -->
   <section>
     <p>
       XYZ is a small but fiercely passionate company founded by two lifelong friends with one goal — to bring bold, high-energy baseball and sports apparel to players and fans who live for the game. Whether you’re stepping up to the plate, cheering from the stands, or just repping the sport you love, XYZ’s gear is designed to help you wear your heart on your sleeve (and your cleats).
     </p>
   </section>
-<section>
-<!-- Social buttons added below header -->
-  <div class="social-buttons">
-    <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
-    </a>
-    <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" />
-    </a>
-    <a href="https://youtube.com/yourusername" target="_blank" rel="noopener noreferrer">
-      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
-    </a>
-  </div>
-</section>
-  /* Basic styles for demo purposes */
-    .dark-mode { background-color: #121212; color: white; }
-    #cart-modal { display: none; position: fixed; top: 50px; right: 50px; background: #fff; padding: 20px; border: 1px solid #ccc; z-index: 1000; }
-    #scroll-top-btn { display: none; position: fixed; bottom: 20px; right: 20px; padding: 10px; cursor: pointer; }
-  </style>
-</head>
-<body>
-  
-  <!-- Example Products -->
-  <div class="product" data-name="Baseball Bat" data-price="50.00">
-    <h3>Baseball Bat</h3>
-    <button class="qty-decrease">-</button>
-    <span class="qty-value">1</span>
-    <button class="qty-increase">+</button>
-    <button class="add-to-cart-btn">Add to Cart</button>
-  </div>
 
-  <div class="product" data-name="Gloves" data-price="25.00">
-    <h3>Gloves</h3>
-    <button class="qty-decrease">-</button>
-    <span class="qty-value">1</span>
-    <button class="qty-increase">+</button>
-    <button class="add-to-cart-btn">Add to Cart</button>
-  </div>
+  <!-- Social Buttons -->
+  <section>
+    <div class="social-buttons">
+      <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
+      </a>
+      <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" />
+      </a>
+      <a href="https://youtube.com/yourusername" target="_blank" rel="noopener noreferrer">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
+      </a>
+    </div>
+  </section>
 
-  <!-- Cart -->
-  <button id="cart-btn">Cart (<span id="cart-count">0</span>)</button>
+  <!-- Review Form -->
+  <form>
+    <h3>Leave a Review</h3>
+    <input type="text" placeholder="Your Name" required />
+    <input type="email" placeholder="Your Email" required />
+    <textarea placeholder="Your Review" rows="4" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- Cart Modal & Button -->
+  <button id="cart-btn" title="View Cart">🛒 <span id="cart-count">0</span></button>
   <div id="cart-modal">
-    <button id="close-cart">Close</button>
-    <ul id="cart-items"></ul>
-    <p>Total: $<span id="cart-total">0.00</span></p>
-    <button id="checkout-btn">Checkout</button>
-    <button id="clear-cart">Clear Cart</button>
+    <button id="close-cart" type="button" title="Close cart">✖</button>
+    <h3>Your Cart</h3>
+    <ul id="cart-items" style="list-style:none; padding: 0; margin-bottom: 15px;"></ul>
+    <p><strong>Total: $<span id="cart-total">0.00</span></strong></p>
+    <button id="checkout-btn" type="button" style="width: 100%; margin-bottom: 10px;">Checkout</button>
+    <button id="clear-cart" type="button" style="width: 100%;">Clear Cart</button>
   </div>
 
-  <!-- Dark Mode -->
-  <button id="dark-mode-toggle">Toggle Dark Mode</button>
+  <!-- Dark Mode & Scroll Top Buttons -->
+  <button id="dark-mode-toggle" title="Toggle Dark Mode">🌙</button>
+  <button id="scroll-top-btn" title="Scroll to Top">⬆️</button>
 
-  <!-- Scroll to Top -->
-  <button id="scroll-top-btn">Top</button>
-
+  <!-- Scripts -->
   <script>
-    // Cart functionality
     let cart = {};
     const cartBtn = document.getElementById('cart-btn');
     const cartModal = document.getElementById('cart-modal');
     const closeCartBtn = document.getElementById('close-cart');
     const cartItemsList = document.getElementById('cart-items');
-    const cartCount = document.getElementById('cart-count');
     const cartTotal = document.getElementById('cart-total');
     const checkoutBtn = document.getElementById('checkout-btn');
     const clearCartBtn = document.getElementById('clear-cart');
 
-    function updateCartDisplay() {
-      cartItemsList.innerHTML = '';
-      let total = 0;
-      let itemCount = 0;
-
-      for (const name in cart) {
-        const item = cart[name];
-        const li = document.createElement('li');
-        li.textContent = `${item.name} x${item.qty} - $${(item.price * item.qty).toFixed(2)}`;
-        cartItemsList.appendChild(li);
-        total += item.price * item.qty;
-        itemCount += item.qty;
-      }
-
-      cartTotal.textContent = total.toFixed(2);
-      cartCount.textContent = itemCount;
-
-      if (itemCount === 0) {
-        cartModal.style.display = 'none';
-      }
-    }
-
-    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+    // Product Add to Cart
+    document.querySelectorAll('.add-to-cart-btn').forEach((btn, idx) => {
       btn.addEventListener('click', () => {
         const productEl = btn.closest('.product');
         const name = productEl.dataset.name;
         const price = parseFloat(productEl.dataset.price);
-        const qtyEl = productEl.querySelector('.qty-value');
-        const qty = parseInt(qtyEl.textContent);
+        const qty = parseInt(productEl.querySelector('.qty-value').textContent);
 
-        if (cart[name]) {
-          cart[name].qty += qty;
-        } else {
-          cart[name] = { name, price, qty };
-        }
-
-        updateCartDisplay();
+        if(cart[name]) cart[name].qty += qty;
+        else cart[name] = {price, qty};
+        updateCart();
       });
     });
 
+    function updateCart() {
+      cartItemsList.innerHTML = '';
+      let total = 0;
+      let count = 0;
+      for(let item in cart){
+        const li = document.createElement('li');
+        li.textContent = `${item} x${cart[item].qty} - $${(cart[item].price * cart[item].qty).toFixed(2)}`;
+        cartItemsList.appendChild(li);
+        total += cart[item].price * cart[item].qty;
+        count += cart[item].qty;
+      }
+      cartTotal.textContent = total.toFixed(2);
+      document.getElementById('cart-count').textContent = count;
+    }
+
+    cartBtn.addEventListener('click', () => { cartModal.style.display = 'block'; });
+    closeCartBtn.addEventListener('click', () => { cartModal.style.display = 'none'; });
+    clearCartBtn.addEventListener('click', () => { cart = {}; updateCart(); });
+
+    // Quantity Controls
     document.querySelectorAll('.qty-increase').forEach(btn => {
       btn.addEventListener('click', () => {
-        const qtyEl = btn.previousElementSibling;
-        qtyEl.textContent = parseInt(qtyEl.textContent) + 1;
+        const span = btn.parentElement.querySelector('.qty-value');
+        span.textContent = parseInt(span.textContent)+1;
       });
     });
-
     document.querySelectorAll('.qty-decrease').forEach(btn => {
       btn.addEventListener('click', () => {
-        const qtyEl = btn.nextElementSibling;
-        const qty = parseInt(qtyEl.textContent);
-        if (qty > 1) qtyEl.textContent = qty - 1;
+        const span = btn.parentElement.querySelector('.qty-value');
+        span.textContent = Math.max(1, parseInt(span.textContent)-1);
       });
     });
 
-    cartBtn.addEventListener('click', () => {
-      cartModal.style.display = cartModal.style.display === 'block' ? 'none' : 'block';
+    // Dark Mode
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
     });
 
-    closeCartBtn.addEventListener('click', () => cartModal.style.display = 'none');
-    clearCartBtn.addEventListener('click', () => { cart = {}; updateCartDisplay(); });
-    checkoutBtn.addEventListener('click', () => alert('Checkout not implemented in this demo.'));
-
-    // Dark mode toggle
-    const darkModeToggle = document.getElementById('dark-mode-toggle');
-    darkModeToggle.addEventListener('click', () => document.body.classList.toggle('dark-mode'));
-
-    // Scroll to top button
+    // Scroll to Top
     const scrollTopBtn = document.getElementById('scroll-top-btn');
-    window.addEventListener('scroll', () => scrollTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none');
-    scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 200) scrollTopBtn.style.display = 'block';
+      else scrollTopBtn.style.display = 'none';
+    });
+    scrollTopBtn.addEventListener('click', () => { window.scrollTo({top:0, behavior:'smooth'}); });
   </script>
 </body>
 </html>
-
-   
