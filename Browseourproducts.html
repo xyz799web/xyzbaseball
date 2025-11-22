@@ -1,284 +1,223 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Shop – XYZ Baseball</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>XYZ | Browse Products</title>
+
+<!-- Fonts -->
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-  /* Reset */
-  *, *::before, *::after {
-    box-sizing: border-box;
+  :root {
+    --hotpink: #ff69b4;
+    --hotpink-2: #ff1493;
+    --lightblue: #add8e6;
+    --black: #000;
+    --card-bg: #0f0f0f;
+    --glass: rgba(255,255,255,0.04);
+    --radius-lg: 12px;
+    --shadow-neon: 0 6px 30px rgba(255,20,147,0.12), 0 1px 4px rgba(0,0,0,0.4);
+    --max-width: 1100px;
   }
 
+  * { box-sizing: border-box; margin:0; padding:0; }
   body {
-    font-family: "Courier New", monospace;
-    background-color: #add8e6; /* Light blue */
-    text-align: center;
-    padding: 20px;
-    color: #ff1493; /* Hot pink text */
-    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--lightblue);
+    color: var(--hotpink-2);
     min-height: 100vh;
+    padding: 20px;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
   }
 
-  h1, h2, h3 {
-    color: #ff1493;
-    margin-bottom: 15px;
-  }
+  .page { width: 100%; max-width: var(--max-width); }
 
-  a {
-    color: #ff1493;
-    text-decoration: underline;
-    transition: color 0.3s ease;
-  }
-  a:hover, a:focus {
-    color: #ff69b4;
-  }
+  header { display:flex; justify-content:space-between; align-items:center; margin-bottom: 30px; }
+  .brand { display:flex; align-items:center; gap:12px; }
+  .brand-logo { width:50px; height:50px; background:linear-gradient(135deg,var(--hotpink),var(--lightblue)); border-radius:10px; display:flex; align-items:center; justify-content:center; color:white; font-weight:700; box-shadow: var(--shadow-neon); font-size:18px; }
+  nav a { text-decoration:none; padding:10px 14px; border-radius:8px; background:var(--black); color:white; font-weight:600; transition: 0.2s; }
+  nav a:hover { background:var(--hotpink); }
 
-  button {
-    padding: 12px 18px;
-    background-color: #ff1493;
-    color: white;
-    font-size: 1rem;
-    border: none;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-    width: 90%;
-    max-width: 300px;
-    margin-top: 10px;
-  }
-  button:hover, button:focus {
-    background-color: #ff69b4;
-  }
+  h1,h2,h3,h4 { color: var(--hotpink-2); margin-bottom:15px; text-align:center; }
 
-  label {
-    color: #222;
-    font-weight: bold;
-    display: block;
-    margin: 10px 0 5px;
-    text-align: left;
-    max-width: 320px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  input[type="text"], input[type="email"] {
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 90%;
-    max-width: 320px;
-    font-size: 1rem;
-    font-family: inherit;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  hr {
-    margin: 30px 0;
-    border: 1px solid #ff1493;
-  }
-
-  /* Search Styling */
-  .search {
-    margin: 20px auto 40px;
-    width: 90%;
-    max-width: 400px;
-  }
-
-  #searchInput {
-    width: 100%;
-    padding: 12px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    font-family: inherit;
-  }
-
-  #itemlist {
-    list-style: none;
-    padding: 0;
-    margin-top: 15px;
-    max-width: 320px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  #itemlist li {
-    margin: 10px 0;
-  }
-
-  #itemlist li a {
-    background: linear-gradient(90deg, #ff1493, #00bfff);
-    color: white;
-    padding: 10px 15px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    width: 100%;
-    transition: background 0.3s ease, color 0.3s ease;
-  }
-
-  #itemlist li a:hover,
-  #itemlist li a:focus {
-    background: linear-gradient(90deg, #00bfff, #ff1493);
-    color: black;
-    outline: none;
-  }
+  /* Search */
+  .search { margin: 20px auto; max-width: 400px; }
+  #searchInput { width:100%; padding:12px; border-radius:8px; border:1px solid #ccc; font-size:1rem; }
+  #itemlist { list-style:none; margin-top:15px; padding:0; }
+  #itemlist li { margin:10px 0; }
+  #itemlist li a { display:block; padding:10px 14px; border-radius:8px; font-weight:700; background:linear-gradient(90deg,var(--hotpink),var(--lightblue)); color:white; text-decoration:none; transition: 0.3s; }
+  #itemlist li a:hover { background:linear-gradient(90deg,var(--lightblue),var(--hotpink)); color:black; }
 
   /* Products Grid */
   .products-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin: 20px auto 40px;
-    width: 90%;
-    max-width: 400px;
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+    gap:18px;
+    margin-top:28px;
   }
-  }
-
   .product {
-    background: linear-gradient(90deg, #ff1493, #00bfff);
-    color: white;
-    padding: 10px 15px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    width: 100%;
-    transition: background 0.3s ease, color 0.3s ease;
-     background: linear-gradient(90deg, #00bfff, #ff1493);
-    color: black;
-    outline: none;
+    background: var(--card-bg);
+    padding:16px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-neon);
+    display:flex; flex-direction:column; align-items:center;
+    text-align:center;
+    transition: transform 0.18s, box-shadow 0.18s;
   }
+  .product:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,0.6); }
+  .product img { width:100%; height:140px; object-fit:cover; border-radius:8px; margin-bottom:12px; }
+  .product h4 { margin-bottom:6px; color:white; }
+  .product .price { font-weight:700; margin-bottom:10px; color:#fff; }
+  .product .actions { display:flex; gap:8px; align-items:center; justify-content:center; margin-top:auto; flex-wrap:wrap; }
+  .qty-container { display:flex; align-items:center; gap:6px; }
+  .qty-btn { background:var(--hotpink); border:none; color:white; padding:6px 10px; border-radius:8px; cursor:pointer; font-weight:700; }
+  .qty-btn:active { transform: scale(.98); }
+  .qty-value { min-width:26px; display:inline-block; text-align:center; color:white; font-weight:700; }
+  .add-to-cart-btn { background:linear-gradient(180deg,var(--hotpink),var(--hotpink-2)); border:none; color:white; padding:10px 12px; border-radius:10px; cursor:pointer; font-weight:800; box-shadow:0 8px 20px rgba(255,20,147,0.12); }
+  .add-to-cart-btn:hover { transform: scale(1.04); }
 
-  }
+  hr { margin:30px 0; border:1px solid var(--hotpink-2); }
+  a.back-home { display:inline-block; font-weight:600; margin-top:20px; }
 
-  .product:hover, .product:focus-within {
-    box-shadow: 0 6px 20px rgba(255,20,147,0.6);
-  }
+  footer { margin-top:40px; font-size:0.9rem; color:#222; text-align:center; }
 
-  .product img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    display: block;
-  }
-
-  .product h2 {
-    margin: 0 0 8px 0;
-    font-size: 1.2rem;
-  }
-
-  .product h2 a {
-    color: #ff1493;
-    text-decoration: none;
-  }
-  .product h2 a:hover, .product h2 a:focus {
-    text-decoration: underline;
-  }
-
-  .price {
-    font-weight: bold;
-    color: #222;
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-  }
-
-  footer {
-    margin-top: auto;
-    font-size: 0.9rem;
-    color: #222;
-    padding: 10px 0;
-  }
-
-  /* Responsive tweaks */
-  @media (max-width: 599px) {
-    .product {
-      max-width: 90%;
-      flex: 1 1 100%;
-    }
-
-    label, input[type="text"], input[type="email"], button {
-      max-width: 100%;
-    }
+  @media(max-width:599px) {
+    .product { max-width:90%; }
+    label,input,button { max-width:100%; }
   }
 </style>
+
 </head>
 <body>
 
-  <h1>🛍️ Our Products</h1>
+<div class="page">
+  <header>
+    <div class="brand">
+      <div class="brand-logo">XYZ</div>
+      <h1>XYZ Baseball</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="About-us.html">About Us</a>
+    </nav>
+  </header>
 
-  <div class="search" role="search" aria-label="Search products">
-    <input id="searchInput" type="text" placeholder="Search for a product..." aria-label="Search products" />
-    <ul id="itemlist" class="results" role="list">
-      <li role="listitem"><a href="Wristtape.html">Wrist Tape</a></li>
-      <li role="listitem"><a href="Wristbands.html">Wristbands</a></li>
-      <li role="listitem"><a href="T-shirts.html">T-Shirt</a></li>
-      <li role="listitem"><a href="Bsblbattinggloves.html">Batting Gloves</a></li>
+  <h2>🛍️ Our Products</h2>
+
+  <div class="search">
+    <input id="searchInput" type="text" placeholder="Search for a product..." />
+    <ul id="itemlist">
+      <li><a href="Wristtape.html">Wrist Tape</a></li>
+      <li><a href="Wristbands.html">Wristbands</a></li>
+      <li><a href="T-shirts.html">T-Shirt</a></li>
+      <li><a href="Bsblbattinggloves.html">Batting Gloves</a></li>
     </ul>
   </div>
 
   <hr />
 
-  <p>
-    <a href="index.html" aria-label="Back to Home page">← Not feeling this page? Click here to go home</a>
-  </p>
-
-  <hr />
-
-  <div class="products-container" aria-live="polite">
-    <article class="product" tabindex="0">
+  <div class="products-container">
+    <div class="product" data-name="XYZ T-Shirts" data-price="35.00">
       <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/010bda83-fc6f-4553-8e3d-3ec5166f1dd3.image.png?v=1750440321844" alt="XYZ T-Shirts" />
-      <h2><a href="T-shirts.html">XYZ T-Shirts</a></h2>
+      <h4>XYZ T-Shirts</h4>
       <div class="price">$35.00</div>
-    </article>
+      <div class="actions">
+        <div class="qty-container">
+          <button class="qty-btn qty-decrease">-</button>
+          <div class="qty-value">1</div>
+          <button class="qty-btn qty-increase">+</button>
+        </div>
+        <button class="add-to-cart-btn">Add</button>
+      </div>
+    </div>
 
-    <article class="product" tabindex="0">
-      <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/6ea172e6-7576-4d74-807e-5cd74bff28d1.image.png?v=1750440676506" alt="XYZ Wrist Tape" />
-      <h2><a href="Wristtape.html">XYZ Wrist Tape</a></h2>
-      <div class="price">$5.00</div>
-    </article>
+```
+<div class="product" data-name="XYZ Wrist Tape" data-price="5.00">
+  <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/6ea172e6-7576-4d74-807e-5cd74bff28d1.image.png?v=1750440676506" alt="XYZ Wrist Tape" />
+  <h4>XYZ Wrist Tape</h4>
+  <div class="price">$5.00</div>
+  <div class="actions">
+    <div class="qty-container">
+      <button class="qty-btn qty-decrease">-</button>
+      <div class="qty-value">1</div>
+      <button class="qty-btn qty-increase">+</button>
+    </div>
+    <button class="add-to-cart-btn">Add</button>
+  </div>
+</div>
 
-    <article class="product" tabindex="0">
-      <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/3dd6b329-e1a6-448f-909a-ddb465b16ce6.image.png?v=1750440527246" alt="XYZ Wristbands" />
-      <h2><a href="Wristbands.html">XYZ Wristbands</a></h2>
-      <div class="price">$5.00</div>
-    </article>
+<div class="product" data-name="XYZ Wristbands" data-price="5.00">
+  <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/3dd6b329-e1a6-448f-909a-ddb465b16ce6.image.png?v=1750440527246" alt="XYZ Wristbands" />
+  <h4>XYZ Wristbands</h4>
+  <div class="price">$5.00</div>
+  <div class="actions">
+    <div class="qty-container">
+      <button class="qty-btn qty-decrease">-</button>
+      <div class="qty-value">1</div>
+      <button class="qty-btn qty-increase">+</button>
+    </div>
+    <button class="add-to-cart-btn">Add</button>
+  </div>
+</div>
 
-    <article class="product" tabindex="0">
-      <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/65b0fa69-6883-4611-a67d-05c033e14b90.image.png?v=1750440440018" alt="XYZ Batting Gloves" />
-      <h2><a href="Bsblbattinggloves.html">XYZ Baseball Batting Gloves</a></h2>
-      <div class="price">$45.00</div>
-    </article>
+<div class="product" data-name="XYZ Batting Gloves" data-price="45.00">
+  <img src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/65b0fa69-6883-4611-a67d-05c033e14b90.image.png?v=1750440440018" alt="XYZ Batting Gloves" />
+  <h4>XYZ Batting Gloves</h4>
+  <div class="price">$45.00</div>
+  <div class="actions">
+    <div class="qty-container">
+      <button class="qty-btn qty-decrease">-</button>
+      <div class="qty-value">1</div>
+      <button class="qty-btn qty-increase">+</button>
+    </div>
+    <button class="add-to-cart-btn">Add</button>
+  </div>
+</div>
+```
+
   </div>
 
   <hr />
+  <a href="index.html" class="back-home">← Back to Home</a>
 
-  <footer>
-    <p>&copy; 2025 XYZ Baseball Co. – All Rights Reserved</p>
-  </footer>
+  <footer>&copy; 2025 XYZ Baseball Co. – All Rights Reserved</footer>
+</div>
 
-  <script>
-    const searchInput = document.getElementById("searchInput");
-    const items = document.querySelectorAll("#itemlist li");
+<script>
+  // Search
+  const searchInput = document.getElementById("searchInput");
+  const items = document.querySelectorAll("#itemlist li");
+  searchInput.addEventListener("input", () => {
+    const term = searchInput.value.toLowerCase().trim();
+    items.forEach(li => { li.style.display = li.textContent.toLowerCase().includes(term) ? "" : "none"; });
+  });
 
-    searchInput.addEventListener("input", () => {
-      const searchTerm = searchInput.value.toLowerCase().trim();
-      items.forEach(li => {
-        const text = li.textContent.toLowerCase();
-        li.style.display = text.includes(searchTerm) ? "" : "none";
-      });
+  // Cart logic
+  let cart = JSON.parse(localStorage.getItem('xyz_cart')||'{}');
+  function saveCart(){ localStorage.setItem('xyz_cart', JSON.stringify(cart)); }
+  document.querySelectorAll('.product').forEach(productEl=>{
+    const name=productEl.dataset.name;
+    const price=parseFloat(productEl.dataset.price);
+    const btnAdd=productEl.querySelector('.add-to-cart-btn');
+    const btnInc=productEl.querySelector('.qty-increase');
+    const btnDec=productEl.querySelector('.qty-decrease');
+    const qtyEl=productEl.querySelector('.qty-value');
+
+    btnInc && btnInc.addEventListener('click',()=>{ qtyEl.textContent=String(Math.min(99,parseInt(qtyEl.textContent)+1)); });
+    btnDec && btnDec.addEventListener('click',()=>{ qtyEl.textContent=String(Math.max(1,parseInt(qtyEl.textContent)-1)); });
+    btnAdd && btnAdd.addEventListener('click',()=>{
+      const qty=parseInt(qtyEl.textContent);
+      if(cart[name]) cart[name].qty += qty; else cart[name]={price:price, qty:qty};
+      if(cart[name].qty>999) cart[name].qty=999;
+      saveCart();
+      alert(`${qty} x ${name} added to cart`);
     });
-  </script>
+  });
+</script>
+
 </body>
 </html>
-
