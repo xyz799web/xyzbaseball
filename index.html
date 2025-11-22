@@ -466,17 +466,32 @@
       </div>
     </section>
 
-    <!-- Review Form -->
-    <section class="card" aria-labelledby="review-heading">
-      <h3 id="review-heading" style="color:var(--hotpink); margin-bottom:8px">Leave a Review</h3>
-      <form class="review-form" id="review-form" novalidate>
-        <input id="review-name" type="text" placeholder="Your Name" required />
-        <input id="review-email" type="email" placeholder="Your Email" required />
-        <textarea id="review-text" placeholder="Your Review" rows="4" required></textarea>
-        <button type="submit">Submit Review</button>
-        <div id="review-feedback" role="status" aria-live="polite" style="margin-top:6px;font-size:13px;color:#d3ffd6;display:none"></div>
-      </form>
-    </section>
+    <!-- FormSubmit Popup -->
+<div id="formsubmit-popup" style="position:fixed;inset:0;background:rgba(0,0,0,0.65);display:flex;justify-content:center;align-items:center;z-index:9999;display:none;">
+  <div style="background:#111;color:white;padding:28px;border-radius:12px;max-width:380px;width:90%;position:relative;box-shadow:0 12px 30px rgba(0,0,0,0.6);">
+    <button id="close-popup" style="position:absolute;top:12px;right:12px;background:none;border:none;color:var(--hotpink);font-size:20px;cursor:pointer;">✖</button>
+    <h3 style="margin-bottom:12px;color:var(--hotpink);text-align:center;">Join Our VIP List!</h3>
+    <form action="https://formsubmit.co/xyzgear@gmail.com" method="POST" target="_blank" style="display:grid;gap:10px;">
+      <input type="text" name="name" placeholder="Your Name" required style="padding:10px;border-radius:8px;border:none;">
+      <input type="email" name="email" placeholder="Your Email" required style="padding:10px;border-radius:8px;border:none;">
+      <button type="submit" style="padding:12px;background:linear-gradient(135deg,var(--hotpink),var(--hotpink-2));color:white;border:none;border-radius:8px;font-weight:700;cursor:pointer;">Submit</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Show popup on page load
+  window.addEventListener('load', () => {
+    document.getElementById('formsubmit-popup').style.display = 'flex';
+  });
+
+  // Close button
+  document.getElementById('close-popup').addEventListener('click', () => {
+    document.getElementById('formsubmit-popup').style.display = 'none';
+  });
+</script>
+
+  
 
   </div> <!-- /page -->
 
