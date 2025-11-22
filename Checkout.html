@@ -1,98 +1,113 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>XYZ | Checkout</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="UTF-8" />
+<title>XYZ | Checkout</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --hotpink: #ff69b4;
+    --hotpink-2: #ff1493;
+    --lightblue: #add8e6;
+    --black: #000;
+    --card-bg: #0f0f0f;
+    --radius-lg: 12px;
+    --radius-md: 8px;
+  }
 
-    body {
-      font-family: "Courier New", monospace;
-      background: #add8e6;
-      color: #000;
-      padding: 40px 20px;
-    }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    .checkout-container {
-      background: white;
-      max-width: 500px;
-      margin: auto;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px #ff69b4aa;
-    }
+  body {
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: var(--lightblue);
+    color: var(--black);
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+  }
 
-    h1 {
-      text-align: center;
-      color: #ff1493;
-      margin-bottom: 30px;
-    }
+  .checkout-container {
+    background: var(--card-bg);
+    color: white;
+    max-width: 500px;
+    width: 100%;
+    padding: 30px;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 0 20px rgba(255,20,147,0.3);
+  }
 
-    label {
-      display: block;
-      margin-bottom: 8px;
-      color: #000;
-      font-weight: bold;
-    }
+  h1 {
+    text-align: center;
+    color: var(--hotpink-2);
+    margin-bottom: 30px;
+  }
 
-    input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 20px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-    }
+  .summary {
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+    border-radius: var(--radius-md);
+    margin-bottom: 20px;
+  }
 
-    button {
-      width: 100%;
-      background-color: #000;
-      color: #fff;
-      padding: 15px;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
+  .summary h2 {
+    font-size: 1.3rem;
+    color: var(--hotpink);
+    margin-bottom: 10px;
+  }
 
-    button:hover {
-      background-color: #ff1493;
-    }
+  .summary p {
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 6px;
+  }
 
-    .summary {
-      background: #f2f2f2;
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: white;
+    font-weight: bold;
+  }
 
-    .summary h2 {
-      font-size: 1.3rem;
-      color: #333;
-      margin-bottom: 10px;
-    }
+  input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
 
-    .summary p {
-      font-size: 1rem;
-      color: #000;
-    }
-  </style>
+  button {
+    width: 100%;
+    background-color: var(--black);
+    color: white;
+    padding: 15px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background 0.3s;
+    font-weight: 700;
+  }
+
+  button:hover {
+    background-color: var(--hotpink-2);
+  }
+
+  .total {
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 1.1rem;
+  }
+</style>
 </head>
 <body>
   <div class="checkout-container">
     <h1>Checkout</h1>
 
-    <div class="summary">
+    <div class="summary" id="order-summary">
       <h2>Order Summary</h2>
-      <p><strong>VIP Membership</strong></p>
-      <p>Price: $20.00 USD</p>
+      <!-- Cart items will appear here dynamically -->
     </div>
 
     <form id="checkout-form">
@@ -103,24 +118,45 @@
     </form>
   </div>
 
-  <script>
-    document.getElementById("checkout-form").addEventListener("submit", async function (e) {
-      e.preventDefault();
-      const email = document.getElementById("email").value;
+<script>
+  // --- Load cart from localStorage ---
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const summaryEl = document.getElementById('order-summary');
 
-      const res = await fetch("https://skitter-clumsy-sweatshirt.glitch.me/create-checkout-session", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-
-      const data = await res.json();
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        alert("Something went wrong. Please try again.");
-      }
+  let total = 0;
+  if(cart.length === 0) {
+    summaryEl.innerHTML += "<p>Your cart is empty.</p>";
+  } else {
+    cart.forEach(item => {
+      const itemEl = document.createElement('p');
+      itemEl.textContent = `${item.name} x ${item.qty} — $${(item.price * item.qty).toFixed(2)}`;
+      summaryEl.appendChild(itemEl);
+      total += item.price * item.qty;
     });
-  </script>
+    const totalEl = document.createElement('p');
+    totalEl.className = 'total';
+    totalEl.textContent = `Total: $${total.toFixed(2)}`;
+    summaryEl.appendChild(totalEl);
+  }
+
+  // --- Handle form submit ---
+  document.getElementById("checkout-form").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const email = document.getElementById("email").value;
+
+    const res = await fetch("https://skitter-clumsy-sweatshirt.glitch.me/create-checkout-session", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, cart })
+    });
+
+    const data = await res.json();
+    if(data.url) {
+      window.location.href = data.url;
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
+  });
+</script>
 </body>
 </html>
