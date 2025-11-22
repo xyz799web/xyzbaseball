@@ -347,9 +347,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Checkout button
   checkoutBtn.addEventListener('click', () => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-    window.location.href = 'thankyou.html';
-  });
+  localStorage.setItem('cart', JSON.stringify(cart));
+  window.location.href = 'checkout.html';
+});
+
 
   renderCart();
 });
