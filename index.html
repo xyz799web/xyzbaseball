@@ -346,10 +346,31 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Checkout button
-  checkoutBtn.addEventListener('click', () => {
+  checkoutBtn.addEventListener('click', async () => {
+  // Save cart to localStorage in case you need it later
   localStorage.setItem('cart', JSON.stringify(cart));
-  window.location.href = 'checkout.html';
+
+  try {
+    const response = await fetch('https://skitter-clumsy-sweatshirt.glitch.me/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cart })
+    });
+
+    const data = await response.json();
+
+    if (data.url) {
+      // Redirect to Stripe Checkout
+      window.location.href = data.url;
+    } else {
+      alert('Failed to create Stripe checkout session.');
+    }
+  } catch (err) {
+    console.error(err);
+    alert('Error contacting server for Stripe checkout.');
+  }
 });
+
 
 
   renderCart();
