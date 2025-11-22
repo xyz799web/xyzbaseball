@@ -321,78 +321,92 @@
   </section>
 </div>
 
-<!-- Cart -->
 <button id="cart-btn">🛒 <span id="cart-count">0</span></button>
-<div id="cart-modal" role="dialog" aria-modal="true">
+<div id="cart-modal" style="display:none;">
   <button id="close-cart">✖</button>
   <h3>Your Cart</h3>
   <ul id="cart-items"></ul>
-  <p><strong>Total: $<span id="cart-total">0.00</span></strong></p>
+  <p>Total: $<span id="cart-total">0.00</span></p>
+</div>
+
+<div class="featured-products">
+  <div class="product" data-name="Batting Gloves" data-price="25.00">
+    <div class="qty-container">
+      <button class="qty-decrease">-</button>
+      <span class="qty-value">1</span>
+      <button class="qty-increase">+</button>
+    </div>
+    <button class="add-to-cart-btn">Add</button>
+  </div>
+
+  <div class="product" data-name="Wrist Tape" data-price="10.00">
+    <div class="qty-container">
+      <button class="qty-decrease">-</button>
+      <span class="qty-value">1</span>
+      <button class="qty-increase">+</button>
+    </div>
+    <button class="add-to-cart-btn">Add</button>
+  </div>
 </div>
 
 <script>
-const cartBtn = document.getElementById('cart-btn');
-const cartModal = document.getElementById('cart-modal');
-const closeCart = document.getElementById('close-cart');
-const cartItems = document.getElementById('cart-items');
-const cartCount = document.getElementById('cart-count');
-const cartTotal = document.getElementById('cart-total');
-let cart = [];
+document.addEventListener('DOMContentLoaded', () => {
+  const cartBtn = document.getElementById('cart-btn');
+  const cartModal = document.getElementById('cart-modal');
+  const closeCart = document.getElementById('close-cart');
+  const cartItems = document.getElementById('cart-items');
+  const cartCount = document.getElementById('cart-count');
+  const cartTotal = document.getElementById('cart-total');
 
-// Open/close cart
-cartBtn.addEventListener('click', () => { cartModal.style.display = 'block'; });
-closeCart.addEventListener('click', () => { cartModal.style.display = 'none'; });
+  let cart = [];
 
-// Add product to cart
-function addToCart(name, price, qty) {
-  const index = cart.findIndex(i => i.name === name);
-  if(index > -1) cart[index].qty += qty;
-  else cart.push({name, price, qty});
-  renderCart();
-}
+  // Show/hide cart
+  cartBtn.addEventListener('click', () => cartModal.style.display = 'block');
+  closeCart.addEventListener('click', () => cartModal.style.display = 'none');
 
-// Render cart items
-function renderCart() {
-  cartItems.innerHTML = '';
-  let total = 0, count = 0;
-  cart.forEach(item => {
-    total += item.price * item.qty;
-    count += item.qty;
-    const li = `
-      <li>
-        <span>${item.name} x ${item.qty}</span>
-        <span>$${(item.price * item.qty).toFixed(2)}</span>
-      </li>`;
-    cartItems.insertAdjacentHTML('beforeend', li);
-  });
-  cartCount.textContent = count;
-  cartTotal.textContent = total.toFixed(2);
-}
+  function renderCart() {
+    cartItems.innerHTML = '';
+    let total = 0;
+    let count = 0;
+    cart.forEach(item => {
+      total += item.price * item.qty;
+      count += item.qty;
+      const li = document.createElement('li');
+      li.textContent = `${item.name} x ${item.qty} - $${(item.price * item.qty).toFixed(2)}`;
+      cartItems.appendChild(li);
+    });
+    cartCount.textContent = count;
+    cartTotal.textContent = total.toFixed(2);
+  }
 
-// Product buttons
-document.querySelectorAll('.product').forEach(product => {
-  const name = product.dataset.name;
-  const price = parseFloat(product.dataset.price);
-  const qtyValue = product.querySelector('.qty-value');
-  let qty = 1;
+  document.querySelectorAll('.product').forEach(product => {
+    const name = product.dataset.name;
+    const price = parseFloat(product.dataset.price);
+    const qtyValue = product.querySelector('.qty-value');
+    let qty = 1;
 
-  product.querySelector('.qty-increase').addEventListener('click', () => {
-    qty++;
-    qtyValue.textContent = qty;
-  });
+    product.querySelector('.qty-increase').addEventListener('click', () => {
+      qty++;
+      qtyValue.textContent = qty;
+    });
 
-  product.querySelector('.qty-decrease').addEventListener('click', () => {
-    if(qty > 1) qty--;
-    qtyValue.textContent = qty;
-  });
+    product.querySelector('.qty-decrease').addEventListener('click', () => {
+      if (qty > 1) qty--;
+      qtyValue.textContent = qty;
+    });
 
-  product.querySelector('.add-to-cart-btn').addEventListener('click', () => {
-    addToCart(name, price, qty);
-    qty = 1;
-    qtyValue.textContent = qty;
+    product.querySelector('.add-to-cart-btn').addEventListener('click', () => {
+      const index = cart.findIndex(i => i.name === name);
+      if (index > -1) cart[index].qty += qty;
+      else cart.push({ name, price, qty });
+      qty = 1;
+      qtyValue.textContent = qty;
+      renderCart();
+    });
   });
 });
 </script>
+
 
 </body>
 </html>
