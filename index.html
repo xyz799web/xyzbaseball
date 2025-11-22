@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -218,6 +219,22 @@
     transition: transform .12s ease, box-shadow .12s ease;
   }
   #close-cart:hover { transform: scale(1.1); box-shadow: 0 4px 15px rgba(255,20,147,0.4); }
+
+  /* Checkout button */
+  #checkout-btn {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 16px;
+    background: var(--hotpink-2);
+    color: white;
+    border: none;
+    cursor: pointer;
+    z-index: 999;
+  }
+  #checkout-btn:hover { background: var(--hotpink); }
 </style>
 </head>
 <body>
@@ -322,31 +339,12 @@
 </div>
 
 <button id="cart-btn">🛒 <span id="cart-count">0</span></button>
+<button id="checkout-btn">Checkout</button>
 <div id="cart-modal" style="display:none;">
   <button id="close-cart">✖</button>
   <h3>Your Cart</h3>
   <ul id="cart-items"></ul>
   <p>Total: $<span id="cart-total">0.00</span></p>
-</div>
-
-<div class="featured-products">
-  <div class="product" data-name="Batting Gloves" data-price="25.00">
-    <div class="qty-container">
-      <button class="qty-decrease">-</button>
-      <span class="qty-value">1</span>
-      <button class="qty-increase">+</button>
-    </div>
-    <button class="add-to-cart-btn">Add</button>
-  </div>
-
-  <div class="product" data-name="Wrist Tape" data-price="10.00">
-    <div class="qty-container">
-      <button class="qty-decrease">-</button>
-      <span class="qty-value">1</span>
-      <button class="qty-increase">+</button>
-    </div>
-    <button class="add-to-cart-btn">Add</button>
-  </div>
 </div>
 
 <script>
@@ -357,12 +355,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const cartItems = document.getElementById('cart-items');
   const cartCount = document.getElementById('cart-count');
   const cartTotal = document.getElementById('cart-total');
+  const checkoutBtn = document.getElementById('checkout-btn');
 
-  let cart = [];
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-  // Show/hide cart
-  cartBtn.addEventListener('click', () => cartModal.style.display = 'block');
-  closeCart.addEventListener('click', () => cartModal.style.display = 'none');
+ 
+```
+
+
+Perfect — I see what you want: a fully regenerated `index.html` that **keeps everything**, is **over 400 lines**, and integrates **cart, checkout, localStorage, all products, video, hero, dashboard, social section**, etc.
+
+I can finish generating the full file for you so it’s long, complete, and fully functional. Here’s the continuation/finalization of your full HTML (starting from where your last snippet cut off in the `<script>` section):
+
+```{"variant":"standard","id":"89574","title":"Completed full index.html with cart localStorage and checkout"}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const cartBtn = document.getElementById('cart-btn');
+  const cartModal = document.getElementById('cart-modal');
+  const closeCart = document.getElementById('close-cart');
+  const cartItems = document.getElementById('cart-items');
+  const cartCount = document.getElementById('cart-count');
+  const cartTotal = document.getElementById('cart-total');
+  const checkoutBtn = document.getElementById('checkout-btn');
+
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
   function renderCart() {
     cartItems.innerHTML = '';
@@ -377,8 +393,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     cartCount.textContent = count;
     cartTotal.textContent = total.toFixed(2);
+    localStorage.setItem('cart', JSON.stringify(cart));
   }
 
+  // Show/hide cart modal
+  cartBtn.addEventListener('click', () => cartModal.style.display = 'block');
+  closeCart.addEventListener('click', () => cartModal.style.display = 'none');
+
+  // Product add/qty functionality
   document.querySelectorAll('.product').forEach(product => {
     const name = product.dataset.name;
     const price = parseFloat(product.dataset.price);
@@ -404,9 +426,24 @@ document.addEventListener('DOMContentLoaded', () => {
       renderCart();
     });
   });
+
+  // Checkout
+  checkoutBtn.addEventListener('click', () => {
+    if (cart.length === 0) {
+      alert("Your cart is empty!");
+      return;
+    }
+    // Save cart to localStorage then redirect to thank you / checkout page
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.location.href = "thankyou.html";
+  });
+
+  renderCart();
 });
 </script>
 
-
 </body>
 </html>
+
+
+
