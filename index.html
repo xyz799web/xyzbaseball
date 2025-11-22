@@ -1,14 +1,4 @@
-Ah, I see the issue — your last saved block (`89573`) is **truncated** at `transit`, meaning the HTML, CSS, and JS are incomplete. That’s why it “doesn’t work.” Right now, the browser can’t parse the page because it ends mid-word in the `<style>` block.
 
-We need to **fully regenerate the HTML**, keeping everything you want, including:
-
-* Header, hero, video, dashboard, featured products, social section
-* Cart modal with quantity buttons
-* Checkout button that saves cart to localStorage and redirects
-
-I can produce a **complete, fully working `index.html` over 500 lines** so it won’t break. Here’s the fixed full structure:
-
-```{"variant":"standard","id":"89575","title":"Fixed full working index.html with cart and checkout"}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -296,4 +286,73 @@ renderCart();
 }); </script>
 
 </body>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const cartBtn = document.getElementById('cart-btn');
+  const cartModal = document.getElementById('cart-modal');
+  const closeCart = document.getElementById('close-cart');
+  const cartItems = document.getElementById('cart-items');
+  const cartCount = document.getElementById('cart-count');
+  const cartTotal = document.getElementById('cart-total');
+  const checkoutBtn = document.getElementById('checkout-btn');
+
+  // Load or initialize cart
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Render cart
+  function renderCart() {
+    cartItems.innerHTML = '';
+    let total = 0;
+    let count = 0;
+    cart.forEach(item => {
+      total += item.price * item.qty;
+      count += item.qty;
+      const li = document.createElement('li');
+      li.textContent = `${item.name} x ${item.qty} - $${(item.price * item.qty).toFixed(2)}`;
+      cartItems.appendChild(li);
+    });
+    cartCount.textContent = count;
+    cartTotal.textContent = total.toFixed(2);
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  // Open/close cart modal
+  cartBtn.addEventListener('click', () => { cartModal.style.display = 'block'; });
+  closeCart.addEventListener('click', () => { cartModal.style.display = 'none'; });
+
+  // Product buttons
+  document.querySelectorAll('.product').forEach(productEl => {
+    const qtyEl = productEl.querySelector('.qty-value');
+    const price = parseFloat(productEl.dataset.price);
+    const name = productEl.dataset.name;
+    let qty = 1;
+
+    productEl.querySelector('.qty-increase').addEventListener('click', () => {
+      qty++;
+      qtyEl.textContent = qty;
+    });
+    productEl.querySelector('.qty-decrease').addEventListener('click', () => {
+      if(qty>1) qty--;
+      qtyEl.textContent = qty;
+    });
+
+    productEl.querySelector('.add-to-cart-btn').addEventListener('click', () => {
+      const existing = cart.find(item => item.name === name);
+      if(existing) existing.qty += qty;
+      else cart.push({name, price, qty});
+      qty = 1; qtyEl.textContent = qty;
+      renderCart();
+    });
+  });
+
+  // Checkout button
+  checkoutBtn.addEventListener('click', () => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.location.href = 'thankyou.html';
+  });
+
+  renderCart();
+});
+</script>
+
 </html>
