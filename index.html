@@ -732,6 +732,41 @@ function renderCart() {
     total += item.price * item.qty;
     count += item.qty;
     const li =
+      <li>
+  <span>${item.name} x ${item.qty}</span>
+  <span>$${(item.price * item.qty).toFixed(2)}</span>
+</li>`;
+    cartItems.insertAdjacentHTML('beforeend', li);
+  });
+  cartCount.textContent = count;
+  cartTotal.textContent = total.toFixed(2);
+}
+
+// --- Product buttons ---
+document.querySelectorAll('.product').forEach(product => {
+  const name = product.dataset.name;
+  const price = parseFloat(product.dataset.price);
+  const qtyValue = product.querySelector('.qty-value');
+  let qty = 1;
+
+  product.querySelector('.qty-increase').addEventListener('click', () => {
+    qty++;
+    qtyValue.textContent = qty;
+  });
+  product.querySelector('.qty-decrease').addEventListener('click', () => {
+    if(qty > 1) qty--;
+    qtyValue.textContent = qty;
+  });
+  product.querySelector('.add-to-cart-btn').addEventListener('click', () => {
+    addToCart(name, price, qty);
+    qty = 1;
+    qtyValue.textContent = qty;
+  });
+});
+</script>
+</body>
+</html>
+
 
 
 
