@@ -5,85 +5,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>XYZ Wrist Bands</title>
   <style>
-    body {
-      background-color: #add8e6; /* Light blue */
-      color: #ff1493; /* Hot pink */
-      font-family: "Courier New", monospace;
-      text-align: center;
-      padding: 30px 20px;
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
     }
 
-    a {
-      color: #ff1493;
-      font-size: 1.2rem;
+    body {
+      font-family: "Courier New", monospace;
+      background-color: #add8e6; /* Light blue */
+      color: #000;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header {
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      color: #ff69b4; /* Hot pink */
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    nav a {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 5px;
+      background-color: #000;
+      color: #fff;
       text-decoration: none;
-      display: block;
-      margin-bottom: 25px;
-      transition: color 0.3s ease;
-      max-width: 320px;
-      margin-left: auto;
-      margin-right: auto;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background-color 0.3s;
     }
 
-    a:hover, a:focus {
-      color: #ff69b4;
-      text-decoration: underline;
-      outline: none;
+    nav a:hover {
+      background-color: #ff69b4;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 0 15px #00ffff;
+      text-align: center;
     }
 
     img {
       width: 100%;
-      max-width: 300px; /* ✅ Fits nicely on mobile */
-      height: auto;
-      border: 5px solid black;
+      max-width: 300px;
       border-radius: 12px;
       margin: 20px auto;
-      display: block;
+      border: 5px solid #000;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      display: block;
     }
 
     h2 {
-      font-size: 2rem;
-      margin-top: 10px;
       color: #ff1493;
-      margin-bottom: 20px;
+      font-size: 2rem;
+      margin: 15px 0;
     }
 
-    /* Buttons container */
     .buttons {
       display: flex;
-      gap: 15px;
       justify-content: center;
+      gap: 15px;
       flex-wrap: wrap;
-      max-width: 320px;
-      margin: 0 auto 40px auto;
+      margin-top: 20px;
     }
 
     button {
-      background-color: #ff1493; /* Hot pink */
-      color: white;
+      background-color: #ff1493;
       border: none;
+      color: #fff;
       padding: 12px 24px;
       font-size: 1.1rem;
       border-radius: 8px;
       cursor: pointer;
-      font-family: "Courier New", monospace;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s;
       flex: 1 1 140px;
       min-width: 140px;
+      font-family: "Courier New", monospace;
     }
 
-    button:hover, button:focus {
-      background-color: #ff69b4; /* Lighter pink */
-      outline: none;
+    button:hover {
+      background-color: #ff69b4;
     }
 
-    /* Responsive adjustments */
+    footer {
+      margin-top: 40px;
+      background-color: #000;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+    }
+
     @media (max-width: 600px) {
-      a {
-        font-size: 1rem;
-      }
       h2 {
         font-size: 1.8rem;
       }
@@ -95,40 +118,46 @@
         flex: 1 1 auto;
         min-width: auto;
       }
+      nav a {
+        padding: 8px 16px;
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <a href="Browseourproducts.html" aria-label="Go back to browse products">
-    Wrist bands aren't your quality? No worries, let's go see the other products!
-  </a>
+  <header>
+    <h1>XYZ Wrist Bands</h1>
+    <nav>
+      <a href="Browseourproducts.html">← Back to Products</a>
+      <a href="index.html">← Back to Home</a>
+    </nav>
+  </header>
 
-  <img
-    src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/3dd6b329-e1a6-448f-909a-ddb465b16ce6.image.png?v=1750440527246"
-    alt="XYZ Wrist Bands"
-  />
+  <main>
+    <img
+      src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/3dd6b329-e1a6-448f-909a-ddb465b16ce6.image.png?v=1750440527246"
+      alt="XYZ Wrist Bands"
+    />
+    <h2>$5</h2>
+    <div class="buttons">
+      <button id="buyNowBtn" aria-label="Buy XYZ Wrist Bands now">Buy Now</button>
+      <button id="addToCartBtn" aria-label="Add XYZ Wrist Bands to cart">Add to Cart</button>
+    </div>
+  </main>
 
-  <h2>
-    XYZ Wrist Bands
-    <br />
-    $5
-  </h2>
-
-  <div class="buttons">
-    <button id="buyNowBtn" aria-label="Buy XYZ Wrist Bands now">Buy Now</button>
-    <button id="addToCartBtn" aria-label="Add XYZ Wrist Bands to cart">Add to Cart</button>
-  </div>
+  <footer>
+    <p>© 2025 XYZ Baseball. All Rights Reserved.</p>
+  </footer>
 
   <script>
     document.getElementById("buyNowBtn").addEventListener("click", () => {
       alert("Thanks for choosing to buy! You will be redirected to the checkout page.");
-      // Replace with your actual checkout page URL:
       window.location.href = "checkout.html";
     });
 
     document.getElementById("addToCartBtn").addEventListener("click", () => {
       alert("XYZ Wrist Bands added to your cart!");
-      // You can add cart functionality here or localStorage/cart API code
     });
   </script>
 </body>
