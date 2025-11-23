@@ -1,0 +1,14 @@
+{
+  "name": "xyz-store",
+  "version": "1.0.0",
+  "description": "XYZ baseball store website",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
+
