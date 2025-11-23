@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -9,91 +10,144 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      transition: all 0.3s ease;
     }
 
-    body {
-      font-family: "Courier New", monospace;
-      background-color: #add8e6; /* Light blue */
-      color: #000;
-      padding: 20px;
-      text-align: center;
-    }
+```
+body {
+  font-family: "Courier New", monospace;
+  background-color: #add8e6;
+  color: #000;
+  padding: 20px;
+  text-align: center;
+}
 
-    header {
-      margin-bottom: 40px;
-    }
+header {
+  margin-bottom: 40px;
+}
 
-    header h1 {
-      font-size: 2.5rem;
-      color: #ff69b4; /* Hot pink */
-      margin-bottom: 10px;
-    }
+header h1 {
+  font-size: 2.5rem;
+  color: #ff69b4;
+  margin-bottom: 10px;
+  animation: fadeInDown 1s ease-out;
+}
 
-    nav a {
-      color: #fff;
-      background-color: #000;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-      display: inline-block;
-      font-weight: bold;
-    }
+nav a {
+  color: #fff;
+  background-color: #000;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  font-weight: bold;
+}
 
-    nav a:hover {
-      background-color: #ff69b4;
-    }
+nav a:hover {
+  background-color: #ff69b4;
+  transform: scale(1.05);
+}
 
-    main {
-      max-width: 800px;
-      margin: 0 auto;
-      background-color: #fff;
-      color: #000;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px #00ffff;
-      text-align: left;
-    }
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  color: #000;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #00ffff;
+  text-align: left;
+}
 
-    main p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
+main p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
 
-    main hr {
-      border: 1px solid #ff69b4;
-      margin: 20px 0;
-    }
+main hr {
+  border: 1px solid #ff69b4;
+  margin: 20px 0;
+}
 
-    footer {
-      margin-top: 40px;
-      background-color: #000;
-      color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      font-size: 0.95rem;
-    }
+/* Team Highlight Section */
+.team {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
 
-    /* Mobile Friendly */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
-      }
+.member {
+  background: #f8f8f8;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px;
+  width: 200px;
+  box-shadow: 0 0 10px #00ffff;
+}
 
-      main {
-        padding: 20px;
-      }
+.member h3 {
+  color: #ff69b4;
+  margin-bottom: 10px;
+}
 
-      main p {
-        font-size: 1rem;
-      }
+.member p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
 
-      nav a {
-        padding: 8px 16px;
-        font-size: 1rem;
-      }
-    }
+footer {
+  margin-top: 40px;
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Friendly */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  main p {
+    font-size: 1rem;
+  }
+
+  nav a {
+    padding: 8px 16px;
+    font-size: 1rem;
+  }
+
+  .team {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .member {
+    width: 80%;
+  }
+}
+```
+
   </style>
 </head>
 
@@ -119,6 +173,21 @@
     <p>
       Since then, they’ve worked tirelessly to improve their site, develop creative marketing strategies, and bring fresh ideas to elevate their business. With determination and teamwork, Thatcher and Gavin are building XYZ into a standout name in the world of baseball and sports apparel.
     </p>
+
+```
+<!-- Optional Team Section -->
+<div class="team">
+  <div class="member">
+    <h3>Thatcher</h3>
+    <p>Co-founder, Web Dev, & Creative Mind behind XYZ Baseball.</p>
+  </div>
+  <div class="member">
+    <h3>Gavin</h3>
+    <p>Co-founder, Marketing, & Baseball Strategist at XYZ Baseball.</p>
+  </div>
+</div>
+```
+
   </main>
 
   <footer>
@@ -126,3 +195,4 @@
   </footer>
 </body>
 </html>
+
