@@ -1,131 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>XYZ Wrist Tape</title>
-    <style>
-      body {
-        background-color: #add8e6; /* Light blue */
-        color: #ff1493; /* Hot pink */
-        font-family: "Courier New", monospace;
-        text-align: center;
-        padding: 40px 20px;
-        margin: 0;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XYZ Wrist Tape</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-      a {
-        color: #ff1493;
-        font-size: 1.2rem;
-        text-decoration: none;
-        display: block;
-        margin-bottom: 30px;
-        transition: color 0.3s ease;
-        max-width: 320px;
-        margin-left: auto;
-        margin-right: auto;
-      }
+    body {
+      font-family: "Courier New", monospace;
+      background-color: #add8e6; /* Light blue */
+      color: #000;
+      text-align: center;
+      padding: 20px;
+    }
 
-      a:hover, a:focus {
-        color: #ff69b4;
-        text-decoration: underline;
-        outline: none;
-      }
+    header {
+      margin-bottom: 30px;
+    }
 
-      img {
-        width: 250px;
-        height: 250px;
-        border: 5px solid black;
-        border-radius: 10px;
-        margin-top: 20px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      }
+    header h1 {
+      font-size: 2.5rem;
+      color: #ff69b4; /* Hot pink */
+      margin-bottom: 10px;
+    }
 
+    nav a {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 5px;
+      background-color: #000;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #ff69b4;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 0 15px #00ffff;
+      text-align: center;
+    }
+
+    img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 12px;
+      margin: 20px auto;
+      border: 5px solid #000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      display: block;
+    }
+
+    h2 {
+      color: #ff1493;
+      font-size: 2rem;
+      margin: 15px 0;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: #ff1493;
+      border: none;
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      flex: 1 1 140px;
+      min-width: 140px;
+      font-family: "Courier New", monospace;
+    }
+
+    button:hover {
+      background-color: #ff69b4;
+    }
+
+    footer {
+      margin-top: 40px;
+      background-color: #000;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 600px) {
       h2 {
-        font-size: 2rem;
-        margin-top: 20px;
-        color: #ff1493;
-        margin-bottom: 30px;
+        font-size: 1.8rem;
       }
-
-      /* Buttons container */
       .buttons {
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-        flex-wrap: wrap;
-        max-width: 320px;
-        margin: 0 auto 40px auto;
+        flex-direction: column;
+        gap: 10px;
       }
-
       button {
-        background-color: #ff1493; /* Hot pink */
-        color: white;
-        border: none;
-        padding: 12px 24px;
-        font-size: 1.1rem;
-        border-radius: 8px;
-        cursor: pointer;
-        font-family: "Courier New", monospace;
-        transition: background-color 0.3s ease;
-        flex: 1 1 140px;
-        min-width: 140px;
+        flex: 1 1 auto;
+        min-width: auto;
       }
-
-      button:hover, button:focus {
-        background-color: #ff69b4; /* Lighter pink */
-        outline: none;
+      nav a {
+        padding: 8px 16px;
+        font-size: 1rem;
       }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>XYZ Wrist Tape</h1>
+    <nav>
+      <a href="Browseourproducts.html">← Back to Products</a>
+      <a href="index.html">← Back to Home</a>
+    </nav>
+  </header>
 
-      /* Responsive adjustments */
-      @media (max-width: 600px) {
-        a {
-          font-size: 1rem;
-        }
-        h2 {
-          font-size: 1.8rem;
-        }
-        .buttons {
-          flex-direction: column;
-          gap: 10px;
-        }
-        button {
-          flex: 1 1 auto;
-          min-width: auto;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <a href="Browseourproducts.html" aria-label="Go back to browse products">
-      Wrist tape isn't for you? No worries, let's go see the other products!
-    </a>
-
+  <main>
     <img
       src="https://cdn.glitch.global/e6f94300-d4f9-4745-b1c1-32e765b91d25/6ea172e6-7576-4d74-807e-5cd74bff28d1.image.png?v=1750440676506"
       alt="XYZ Wrist Tape"
     />
-
-    <h2>
-      XYZ Wrist tape<br />
-      $5 per roll
-    </h2>
-
+    <h2>$5 per roll</h2>
     <div class="buttons">
       <button id="buyNowBtn" aria-label="Buy XYZ Wrist Tape now">Buy Now</button>
       <button id="addToCartBtn" aria-label="Add XYZ Wrist Tape to cart">Add to Cart</button>
     </div>
+  </main>
 
-    <script>
-      document.getElementById("buyNowBtn").addEventListener("click", () => {
-        alert("Thanks for choosing to buy! You will be redirected to the checkout page.");
-        // Replace with your actual checkout page URL:
-        window.location.href = "checkout.html";
-      });
+  <footer>
+    <p>© 2025 XYZ Baseball. All Rights Reserved.</p>
+  </footer>
 
-      document.getElementById("addToCartBtn").addEventListener("click", () => {
-        alert("XYZ Wrist Tape added to your cart!");
-        // You can add cart functionality here or localStorage/cart API code
-      });
-    </script>
-  </body>
+  <script>
+    document.getElementById("buyNowBtn").addEventListener("click", () => {
+      alert("Thanks for choosing to buy! You will be redirected to the checkout page.");
+      window.location.href = "checkout.html";
+    });
+
+    document.getElementById("addToCartBtn").addEventListener("click", () => {
+      alert("XYZ Wrist Tape added to your cart!");
+    });
+  </script>
+</body>
 </html>
