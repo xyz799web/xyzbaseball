@@ -150,16 +150,7 @@
     <p>© 2025 XYZ Baseball. All Rights Reserved.</p>
   </footer>
 
-  <script>
-    document.getElementById("buyNowBtn").addEventListener("click", () => {
-      alert("Thanks for choosing to buy! You will be redirected to the checkout page.");
-      window.location.href = "checkout.html";
-    });
-
-    document.getElementById("addToCartBtn").addEventListener("click", () => {
-      alert("XYZ Wrist Bands added to your cart!");
-    });
- <!-- Floating Cart Button -->
+  <!-- Floating Cart Button -->
 <style>
   #cartBtn {
     position: fixed;
@@ -171,19 +162,106 @@
     border-radius: 10px;
     font-family: "Courier New", monospace;
     cursor: pointer;
-    z-index: 999;
+    z-index: 9999;
     border: 3px solid white;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
   }
 </style>
 
 <button id="cartBtn">Cart 🛒</button>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
   // Floating cart button → go to cart page
-  document.getElementById("cartBtn").addEventListener("click", () => {
-    window.location.href = "cart.html";
+  const btn = document.getElementById('cartBtn');
+  if(btn){
+    btn.addEventListener('click', () => {
+      window.location.href = 'cart.html';
+    });
+  }
+
+  // Cart modal elements
+  const cartBtn = document.getElementById('cart-btn');
+  const cartModal = document.getElementById('cart-modal');
+  const closeCart = document.getElementById('close-cart');
+  const cartItems = document.getElementById('cart-items');
+  const cartCount = document.getElementById('cart-count');
+  const cartTotal = document.getElementById('cart-total');
+  const checkoutBtn = document.getElementById('checkout-btn');
+
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  function renderCart() {
+    cartItems.innerHTML = '';
+    let total = 0;
+    let count = 0;
+    cart.forEach(item => {
+      total += item.price * item.qty;
+      count += item.qty;
+      const li = document.createElement('li');
+      li.textContent = `${item.name} x ${item.qty} - $${(item.price * item.qty).toFixed(2)}`;
+      cartItems.appendChild(li);
+    });
+    cartCount.textContent = count;
+    cartTotal.textContent = total.toFixed(2);
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  // Open/close cart modal
+  if(cartBtn && cartModal && closeCart){
+    cartBtn.addEventListener('click', () => { cartModal.style.display = 'block'; });
+    closeCart.addEventListener('click', () => { cartModal.style.display = 'none'; });
+  }
+
+  // Product buttons
+  document.querySelectorAll('.product').forEach(productEl => {
+    const qtyEl = productEl.querySelector('.qty-value');
+    const price = parseFloat(productEl.dataset.price);
+    const name = productEl.dataset.name;
+    let qty = 1;
+
+    productEl.querySelector('.qty-increase').addEventListener('click', () => {
+      qty++;
+      qtyEl.textContent = qty;
+    });
+    productEl.querySelector('.qty-decrease').addEventListener('click', () => {
+      if(qty > 1) qty--;
+      qtyEl.textContent = qty;
+    });
+
+    productEl.querySelector('.add-to-cart-btn').addEventListener('click', () => {
+      const existing = cart.find(item => item.name === name);
+      if(existing) existing.qty += qty;
+      else cart.push({name, price, qty});
+      qty = 1; qtyEl.textContent = qty;
+      renderCart();
+    });
   });
+
+  // Checkout button
+  if(checkoutBtn){
+    checkoutBtn.addEventListener('click', async () => {
+      localStorage.setItem('cart', JSON.stringify(cart));
+      try {
+        const response = await fetch('https://skitter-clumsy-sweatshirt.glitch.me/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ cart })
+        });
+        const data = await response.json();
+        if(data.url) window.location.href = data.url;
+        else alert('Failed to create Stripe checkout session.');
+      } catch(err){
+        console.error(err);
+        alert('Error contacting server for Stripe checkout.');
+      }
+    });
+  }
+
+  renderCart();
+});
 </script>
+
 
 
 </body>
