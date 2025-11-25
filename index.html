@@ -375,6 +375,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderCart();
 });
+<!-- Floating Cart Button -->
+<style>
+  #cartBtn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #ff1493;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-family: "Courier New", monospace;
+    cursor: pointer;
+    z-index: 999;
+    border: 3px solid white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+</style>
+
+<button id="cartBtn">Cart 🛒</button>
+
+<script>
+  // Make cart button go to the cart page
+  document.getElementById("cartBtn").addEventListener("click", () => {
+    window.location.href = "cart.html";
+  });
 </script>
+
+  
 
 </html>
