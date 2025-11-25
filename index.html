@@ -217,6 +217,7 @@ section.card { background: var(--card-bg); color: #fff; padding: 20px; border-ra
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+
   const cartBtn = document.getElementById('cart-btn');
   const cartModal = document.getElementById('cart-modal');
   const closeCart = document.getElementById('close-cart');
@@ -246,15 +247,17 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }
 
-  // Open + Close modal
+  // OPEN CART
   cartBtn.addEventListener('click', () => {
     cartModal.style.display = 'block';
   });
+
+  // CLOSE CART
   closeCart.addEventListener('click', () => {
     cartModal.style.display = 'none';
   });
 
-  // Product Quantity + Add
+  // PRODUCT BUTTONS
   document.querySelectorAll('.product').forEach(productEl => {
     const qtyEl = productEl.querySelector('.qty-value');
     const price = parseFloat(productEl.dataset.price);
@@ -273,43 +276,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     productEl.querySelector('.add-to-cart-btn').addEventListener('click', () => {
       const existing = cart.find(item => item.name === name);
+
       if (existing) existing.qty += qty;
       else cart.push({ name, price, qty });
 
       qty = 1;
       qtyEl.textContent = qty;
-
       renderCart();
     });
   });
 
-  // Stripe Checkout
-  checkoutBtn.addEventListener('click', async () => {
-    localStorage.setItem('cart', JSON.stringify(cart));
+  // CHECKOUT BUTTON
+  checkoutBtn.addEventListener('cl
 
-    try {
-      const res = await fetch('https://skitter-clumsy-sweatshirt.glitch.me/create-checkout-session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ cart })
-      });
-
-      const data = await res.json();
-
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        alert('Checkout failed.');
-      }
-    } catch (err) {
-      console.error(err);
-      alert('Error contacting server.');
-    }
-  });
-
-  renderCart();
-});
-</script>
 
 
 </body>
